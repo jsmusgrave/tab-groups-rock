@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="popup.css" />
+	<title>Tab Groups Rock</title>
+</head>
+<body>
+	<header>
+		<h1>Tab Groups Rock</h1>
+		<button id="settings-btn" title="Settings" aria-label="Settings">&#9881;</button>
+	</header>
+
+	<div id="no-vault-notice" hidden>
+		No vault configured yet. <a href="#" id="open-settings-link">Add a vault name in settings</a>.
+	</div>
+
+	<div id="group-list"></div>
+
+	<div class="field-row">
+		<label for="folder-input">Folder</label>
+		<input id="folder-input" type="text" />
+	</div>
+
+	<label class="checkbox-row">
+		<input id="close-after-save" type="checkbox" />
+		Close group after saving
+	</label>
+
+	<div class="actions">
+		<button id="save-btn" class="primary">Add to Obsidian</button>
+	</div>
+
+	<div id="status"></div>
+
+	<script type="module" src="popup.js"></script>
+</body>
+</html>

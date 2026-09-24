@@ -1,0 +1,19 @@
+{
+	"name": "tab-groups-rock",
+	"version": "0.1.0",
+	"description": "Save a Chrome tab group as a Markdown note in Obsidian, with a link to every tab.",
+	"private": true,
+	"license": "MIT",
+	"scripts": {
+		"build": "node build.mjs",
+		"watch": "node build.mjs --watch"
+	},
+	"dependencies": {
+		"knap": "0.6.0"
+	},
+	"devDependencies": {
+		"@types/chrome": "^0.0.280",
+		"esbuild": "^0.24.0",
+		"typescript": "^5.6.3"
+	}
+}
