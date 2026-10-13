@@ -189,13 +189,17 @@ Not yet present: `_locales`, tests, CI, `docs/`.
 
 ## 9. Roadmap after v1
 
-1. **Restore a group from a note.** With the REST writer, list notes with `type: tab-group` and reopen one (`tabs.create` per URL, `tabs.group`, `tabGroups.update`). Without REST, accept a pasted note or dropped `.md` file.
-2. **Local REST API writer (v1.1).** Confirms writes, enables append-to-heading, and makes close-after-save safe without a prompt.
-3. **Clipboard courtesy** behind `optional_permissions`, requested only when the user turns it on, restoring on focus return rather than a timer.
-4. **Save a window as one note.**
-5. **Auto-offer on group removal** using a shadow copy of groups in `storage.session`.
-6. **Firefox** (139+) and **Edge** listings.
-7. **Template directory** of community templates.
+1. **Bookmark folder destination.** Write each archived group as a bookmark folder under `Archived groups / YYYY-MM`. Chrome's own "Open all in new tab group" on a folder restores it natively, so this is a complete archive-and-restore loop that works without Obsidian. Decided 2026-09-28 to make it first-class, since Chrome's saved groups never leave the working set and the user had forty of them. Costs the `bookmarks` permission ("Read and change your bookmarks"). About thirty lines.
+2. **Paste-to-restore.** A field in the popup that accepts the note's JSON block and rebuilds the group. No permissions, no hosting.
+3. **Restore link in the note.** An https link to a static page (GitHub Pages) with the group JSON in the URL fragment; the page talks to the extension via `externally_connectable` and the extension rebuilds the group. Without the extension the page shows plain links. Verified 2026-09-28: Chrome opens `chrome-extension://` pages from outside, but macOS has no handler for that scheme, so a link in Obsidian must be https. Needs the stable Web Store extension ID.
+4. **Local REST API writer.** Confirms writes, enables append-to-heading, makes close-after-save safe without a prompt, and lets the popup list archived groups for restore.
+5. **Clipboard courtesy** behind `optional_permissions`, restoring on focus return rather than a timer.
+6. **Save a window as one note.**
+7. **Auto-offer on group removal** using a shadow copy of groups in `storage.session`.
+8. **Firefox** (139+) and **Edge** listings.
+9. **Template directory** of community templates.
+
+Known limit (2026-09-28): there is no extension API to delete one of Chrome's saved groups or to tell whether a group is saved. Closing a saved group's tabs may leave its entry in the Chrome menu's Tab groups list; clearing that is manual.
 
 ## 10. Naming
 
@@ -220,7 +224,7 @@ Order chosen so each step is testable on its own.
 
 From the 2026-09-22 code review. Items 1–6 were fixed the same day (§13); what remains:
 
-1. **Not yet tested in Chrome:** the save-page refactor as a whole (multi-group Send next, context menu path, close confirmation) and the fixes below. Single-group save was verified before the refactor.
+1. **Not yet tested in Chrome:** the save-page refactor as a whole (multi-group Send next, context menu path, close confirmation) and the fixes below. Single-group save was verified before the refactor. Also check whether closing a *saved* group's tabs leaves its entry in the Chrome menu (§9).
 2. **Unverified assumptions** carried from the debugging session: Chrome blocks external-protocol launches from inactive tabs; `execCommand('copy')` works in an unfocused extension page with `clipboardWrite`; focus loss reliably means Obsidian took over. None blocks shipping, but the second is the fallback path when `navigator.clipboard` is unavailable and has not been exercised.
 3. **`{% if skipped %}` is correct as written.** The original draft's `skipped | length > 0` is not valid knap; noted so nobody "fixes" it back.
 4. **Rendering in the service worker.** The context-menu path bundles knap into `background.js` (~100 KB minified). Acceptable; revisit only if worker start-up becomes noticeable.
