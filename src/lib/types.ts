@@ -25,6 +25,11 @@ export interface Settings {
 	skipPinnedTabs: boolean;
 	skipRestrictedUrls: boolean;
 	closeGroupAfterSaving: boolean;
+	// Also write each archived group as a Chrome bookmark folder, which Chrome
+	// can reopen as a group via "Open all in new tab group".
+	writeBookmarks: boolean;
+	// Which main-button action the popup uses.
+	primaryAction: 'addToObsidian' | 'saveFile' | 'copyToClipboard';
 }
 
 export interface RenderedNote {
@@ -37,6 +42,9 @@ export interface JobNote {
 	groupTitle: string;
 	note: RenderedNote;
 	tabIds: number[];
+	// Set when the group was also written as a bookmark folder, e.g.
+	// "Archived groups/2026-10/Alpha". Shown on the save page.
+	bookmarkPath?: string;
 }
 
 // A batch of rendered notes handed from the popup or context menu to the save

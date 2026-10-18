@@ -5,7 +5,9 @@ const DEFAULTS: Settings = {
 	folder: 'Tab Groups/',
 	skipPinnedTabs: false,
 	skipRestrictedUrls: true,
-	closeGroupAfterSaving: false
+	closeGroupAfterSaving: false,
+	writeBookmarks: true,
+	primaryAction: 'addToObsidian'
 };
 
 export async function getSettings(): Promise<Settings> {
