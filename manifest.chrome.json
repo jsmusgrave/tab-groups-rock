@@ -26,7 +26,8 @@
 		"tabGroups",
 		"storage",
 		"clipboardWrite",
-		"contextMenus"
+		"contextMenus",
+		"bookmarks"
 	],
 	"commands": {
 		"_execute_action": {
