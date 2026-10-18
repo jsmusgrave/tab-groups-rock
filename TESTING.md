@@ -2,7 +2,7 @@
 
 Run this against a fresh `npm run build` whenever the save flow, the popup, or `collect.ts` changes. Record results in the table at the bottom and commit it with the change, so the next person knows what was last verified.
 
-Build under test: _(git commit)_ · Chrome: _(version)_ · Date: _(date)_
+Build under test: `a898186` (source unchanged through `36474bc`) · Chrome: 155.0.8059.84 · Date: 2026-10-18
 
 ## Setup
 
@@ -44,16 +44,16 @@ Each case starts from the setup state unless it says otherwise. "Note arrived" m
 
 | # | Result | Notes |
 |---|---|---|
-| 1 | | |
-| 2 | | |
-| 3 | | |
-| 4a | | |
-| 4b | | |
-| 5 | | |
-| 6 | | |
-| 7 | | |
-| 8 | | |
-| 9 | | |
-| 10 | | |
+| 1 | pass |  |
+| 2 | pass |  |
+| 3 | pass |  |
+| 4a | pass |  |
+| 4b | pass |  |
+| 5 | pass |  |
+| 6 | pass |  |
+| 7 | pass |  |
+| 8 | pass |  |
+| 9 | pass | Leftover entry under Chrome menu → Tab groups: _not recorded_ |
+| 10 | pass |  |
 
 Result values: **pass**, **fail**, **skip**. Put what you actually saw in Notes for anything other than pass.
