@@ -56,6 +56,15 @@ h1 {
 	font-size: 12px;
 }
 
+.select-all-row {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: 6px;
+	font-size: 12px;
+	color: var(--muted);
+}
+
 #group-list {
 	display: flex;
 	flex-direction: column;
@@ -129,13 +138,15 @@ h1 {
 
 .actions {
 	display: flex;
+	gap: 1px;
+	position: relative;
 }
 
 button.primary {
 	flex: 1;
 	padding: 8px;
 	border: none;
-	border-radius: 6px;
+	border-radius: 6px 0 0 6px;
 	background: var(--accent);
 	color: white;
 	font-weight: 600;
@@ -145,6 +156,63 @@ button.primary {
 button.primary:disabled {
 	opacity: 0.5;
 	cursor: default;
+}
+
+.more-wrap {
+	position: relative;
+}
+
+button.more {
+	height: 100%;
+	padding: 8px 10px;
+	border: none;
+	border-radius: 0 6px 6px 0;
+	background: var(--accent);
+	color: white;
+	cursor: pointer;
+	font-size: 11px;
+}
+
+button.more:disabled {
+	opacity: 0.5;
+	cursor: default;
+}
+
+.more-menu {
+	position: absolute;
+	bottom: calc(100% + 4px);
+	right: 0;
+	min-width: 160px;
+	background: var(--bg);
+	border: 1px solid var(--border);
+	border-radius: 6px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	z-index: 10;
+}
+
+.more-menu button {
+	display: block;
+	width: 100%;
+	text-align: left;
+	padding: 8px 10px;
+	border: none;
+	background: none;
+	color: var(--fg);
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.more-menu button:hover {
+	background: var(--border);
+}
+
+.helper-text {
+	margin: 6px 0 0;
+	font-size: 11px;
+	color: var(--muted);
 }
 
 #status {
