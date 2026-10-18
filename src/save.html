@@ -56,6 +56,30 @@
 		.status.sent-in-uri {
 			color: var(--warn);
 		}
+		.note-info {
+			display: flex;
+			flex-direction: column;
+			gap: 2px;
+		}
+		.bookmark-path {
+			color: var(--muted);
+			font-size: 12px;
+		}
+		#first-run-hint {
+			border: 1px solid var(--border);
+			border-radius: 6px;
+			padding: 10px 12px;
+			margin-bottom: 16px;
+			font-size: 13px;
+		}
+		#first-run-hint p {
+			margin: 0 0 8px;
+			color: var(--fg);
+		}
+		#first-run-hint button {
+			padding: 4px 10px;
+			margin-right: 0;
+		}
 		#message {
 			color: var(--muted);
 		}
@@ -68,6 +92,10 @@
 </head>
 <body>
 	<h1 id="heading">Saving to Obsidian</h1>
+	<div id="first-run-hint" hidden>
+		<p>Chrome will ask whether to open Obsidian. Tick &quot;Always allow&quot; to skip the question next time. If Obsidian doesn't open, check that the vault name in settings matches Obsidian exactly.</p>
+		<button id="hint-dismiss-btn" type="button">Got it</button>
+	</div>
 	<ul id="note-list"></ul>
 	<p id="message"></p>
 	<button id="next-btn" type="button" hidden></button>

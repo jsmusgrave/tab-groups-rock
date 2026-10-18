@@ -19,7 +19,11 @@ import { buildObsidianUri } from './lib/writers/uri';
 
 type NoteStatus = 'waiting' | 'sent' | 'sent-in-uri';
 
+const FIRST_RUN_HINT_KEY = 'firstRunHintShown';
+
 const headingEl = document.getElementById('heading') as HTMLHeadingElement;
+const hintEl = document.getElementById('first-run-hint') as HTMLDivElement;
+const hintDismissBtn = document.getElementById('hint-dismiss-btn') as HTMLButtonElement;
 const noteListEl = document.getElementById('note-list') as HTMLUListElement;
 const messageEl = document.getElementById('message') as HTMLParagraphElement;
 const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
@@ -29,6 +33,7 @@ const doneBtn = document.getElementById('done-btn') as HTMLButtonElement;
 let job: SaveJob;
 let statuses: NoteStatus[] = [];
 let nextIndex = 0;
+let tabsClosed = false;
 
 function closeSelf(): void {
 	chrome.tabs.getCurrent((tab) => {
@@ -45,15 +50,38 @@ function render(): void {
 	noteListEl.innerHTML = '';
 	job.notes.forEach((item, i) => {
 		const row = document.createElement('li');
+		const info = document.createElement('div');
+		info.className = 'note-info';
 		const title = document.createElement('span');
 		title.textContent = item.note.fileName;
+		info.appendChild(title);
+		if (item.bookmarkPath) {
+			const bookmark = document.createElement('span');
+			bookmark.className = 'bookmark-path';
+			bookmark.textContent = `Bookmarked to ${item.bookmarkPath}`;
+			info.appendChild(bookmark);
+		}
 		const status = document.createElement('span');
 		status.className = `status ${statuses[i]}`;
 		status.textContent =
-			statuses[i] === 'waiting' ? 'Waiting' : statuses[i] === 'sent' ? 'Sent' : 'Sent (clipboard unavailable)';
-		row.append(title, status);
+			statuses[i] === 'waiting'
+				? 'Waiting'
+				: statuses[i] === 'sent'
+					? 'Handed to Obsidian'
+					: 'Handed to Obsidian (clipboard unavailable, sent in link)';
+		row.append(info, status);
 		noteListEl.appendChild(row);
 	});
+
+	if (tabsClosed) {
+		nextBtn.hidden = true;
+		closeTabsBtn.hidden = true;
+		doneBtn.hidden = false;
+		doneBtn.textContent = 'Done';
+		messageEl.textContent =
+			'Tabs closed. Chrome still lists this group under the Chrome menu → Tab groups; use Delete group there if you want it gone.';
+		return;
+	}
 
 	const allSent = nextIndex >= job.notes.length;
 	nextBtn.hidden = allSent;
@@ -100,9 +128,20 @@ function runInteractive(): void {
 	nextBtn.addEventListener('click', () => sendNext());
 	closeTabsBtn.addEventListener('click', async () => {
 		await chrome.tabs.remove(closableTabIds()).catch(() => undefined);
-		closeSelf();
+		tabsClosed = true;
+		render();
 	});
 	doneBtn.addEventListener('click', closeSelf);
+}
+
+async function maybeShowFirstRunHint(): Promise<void> {
+	const stored = await chrome.storage.local.get({ [FIRST_RUN_HINT_KEY]: false });
+	if (stored[FIRST_RUN_HINT_KEY]) return;
+	hintEl.hidden = false;
+	hintDismissBtn.addEventListener('click', () => {
+		hintEl.hidden = true;
+		chrome.storage.local.set({ [FIRST_RUN_HINT_KEY]: true }).catch(() => undefined);
+	});
 }
 
 async function init(): Promise<void> {
@@ -118,6 +157,7 @@ async function init(): Promise<void> {
 	job = loaded;
 	statuses = job.notes.map(() => 'waiting');
 	headingEl.textContent = job.notes.length === 1 ? 'Saving to Obsidian' : `Saving ${job.notes.length} groups to Obsidian`;
+	maybeShowFirstRunHint().catch(() => undefined);
 
 	await sendNext();
 	if (job.notes.length === 1 && !job.closeAfterSaving) {
