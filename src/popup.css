@@ -16,6 +16,12 @@
 	}
 }
 
+/* Author display rules (e.g. .more-menu { display: flex }) would otherwise
+   beat the UA stylesheet's [hidden] { display: none }. */
+[hidden] {
+	display: none !important;
+}
+
 body {
 	width: 340px;
 	margin: 0;
