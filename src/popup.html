@@ -15,6 +15,11 @@
 		No vault configured yet. <a href="#" id="open-settings-link">Add a vault name in settings</a>.
 	</div>
 
+	<label class="select-all-row" id="select-all-row" hidden>
+		<input id="select-all-checkbox" type="checkbox" />
+		Select all
+	</label>
+
 	<div id="group-list"></div>
 
 	<div class="field-row">
@@ -28,8 +33,21 @@
 	</label>
 
 	<div class="actions">
-		<button id="save-btn" class="primary">Add to Obsidian</button>
+		<button id="primary-btn" class="primary">Add to Obsidian</button>
+		<div class="more-wrap">
+			<button
+				id="more-btn"
+				class="more"
+				aria-haspopup="true"
+				aria-expanded="false"
+				title="Run another action once. This does not change your default action, which is set in Settings."
+			>&#9662;</button>
+			<div id="more-menu" class="more-menu" hidden></div>
+		</div>
 	</div>
+	<p class="helper-text">
+		The &#9662; menu runs an action once without changing your default (set in Settings).
+	</p>
 
 	<div id="status"></div>
 

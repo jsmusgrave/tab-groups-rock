@@ -1,16 +1,31 @@
 import { collectGroups } from './lib/collect';
 import { startSaveJob } from './lib/job';
+import { renderNote } from './lib/render';
 import { getSettings, setSettings } from './lib/storage';
 import type { GroupSnapshot, Settings } from './lib/types';
+
+type Action = Settings['primaryAction'];
+
+const ACTION_LABELS: Record<Action, string> = {
+	addToObsidian: 'Add to Obsidian',
+	saveFile: 'Save file',
+	copyToClipboard: 'Copy to clipboard'
+};
+
+const ACTION_ORDER: Action[] = ['addToObsidian', 'saveFile', 'copyToClipboard'];
 
 let groups: GroupSnapshot[] = [];
 let settings: Settings;
 let windowId: number | undefined;
 
 const groupListEl = document.getElementById('group-list') as HTMLDivElement;
+const selectAllRow = document.getElementById('select-all-row') as HTMLLabelElement;
+const selectAllCheckbox = document.getElementById('select-all-checkbox') as HTMLInputElement;
 const folderInput = document.getElementById('folder-input') as HTMLInputElement;
 const closeAfterSaveCheckbox = document.getElementById('close-after-save') as HTMLInputElement;
-const saveBtn = document.getElementById('save-btn') as HTMLButtonElement;
+const primaryBtn = document.getElementById('primary-btn') as HTMLButtonElement;
+const moreBtn = document.getElementById('more-btn') as HTMLButtonElement;
+const moreMenu = document.getElementById('more-menu') as HTMLDivElement;
 const statusEl = document.getElementById('status') as HTMLDivElement;
 const noVaultNotice = document.getElementById('no-vault-notice') as HTMLDivElement;
 const settingsBtn = document.getElementById('settings-btn') as HTMLButtonElement;
@@ -27,6 +42,8 @@ async function init(): Promise<void> {
 	noVaultNotice.hidden = Boolean(settings.vaultName);
 	folderInput.value = settings.folder;
 	closeAfterSaveCheckbox.checked = settings.closeGroupAfterSaving;
+	primaryBtn.textContent = ACTION_LABELS[settings.primaryAction];
+	renderMoreMenu();
 
 	const currentWindow = await chrome.windows.getCurrent();
 	windowId = currentWindow.id;
@@ -42,7 +59,49 @@ async function init(): Promise<void> {
 	const preselect =
 		activeGroupId !== chrome.tabGroups.TAB_GROUP_ID_NONE ? activeGroupId : hasRealGroups ? null : -1;
 	renderGroupList(preselect);
+	syncSelectAllState();
 }
+
+function renderMoreMenu(): void {
+	moreMenu.innerHTML = '';
+	for (const action of ACTION_ORDER) {
+		if (action === settings.primaryAction) continue;
+		const item = document.createElement('button');
+		item.type = 'button';
+		item.textContent = ACTION_LABELS[action];
+		item.addEventListener('click', () => {
+			closeMoreMenu();
+			performAction(action);
+		});
+		moreMenu.appendChild(item);
+	}
+}
+
+function openMoreMenu(): void {
+	moreMenu.hidden = false;
+	moreBtn.setAttribute('aria-expanded', 'true');
+}
+
+function closeMoreMenu(): void {
+	moreMenu.hidden = true;
+	moreBtn.setAttribute('aria-expanded', 'false');
+}
+
+moreBtn.addEventListener('click', (event) => {
+	event.stopPropagation();
+	if (moreMenu.hidden) openMoreMenu();
+	else closeMoreMenu();
+});
+
+document.addEventListener('click', (event) => {
+	if (!moreMenu.hidden && !moreMenu.contains(event.target as Node) && event.target !== moreBtn) {
+		closeMoreMenu();
+	}
+});
+
+document.addEventListener('keydown', (event) => {
+	if (event.key === 'Escape') closeMoreMenu();
+});
 
 function renderGroupList(preselectGroupId: number | null): void {
 	groupListEl.innerHTML = '';
@@ -76,6 +135,35 @@ function renderGroupList(preselectGroupId: number | null): void {
 	}
 }
 
+function rowCheckboxes(): HTMLInputElement[] {
+	return Array.from(groupListEl.querySelectorAll<HTMLInputElement>('input[type="checkbox"]'));
+}
+
+function syncSelectAllState(): void {
+	const boxes = rowCheckboxes();
+	if (boxes.length <= 1) {
+		selectAllRow.hidden = true;
+		return;
+	}
+	selectAllRow.hidden = false;
+	const checkedCount = boxes.filter((box) => box.checked).length;
+	selectAllCheckbox.checked = checkedCount === boxes.length;
+	selectAllCheckbox.indeterminate = checkedCount > 0 && checkedCount < boxes.length;
+}
+
+// Delegated: fires for every individual row checkbox toggle.
+groupListEl.addEventListener('change', (event) => {
+	if ((event.target as HTMLElement)?.matches('input[type="checkbox"]')) {
+		syncSelectAllState();
+	}
+});
+
+selectAllCheckbox.addEventListener('change', () => {
+	const checked = selectAllCheckbox.checked;
+	for (const box of rowCheckboxes()) box.checked = checked;
+	syncSelectAllState();
+});
+
 function selectedGroups(): GroupSnapshot[] {
 	const checkedIds = Array.from(
 		groupListEl.querySelectorAll<HTMLInputElement>('input[type="checkbox"]:checked')
@@ -90,14 +178,41 @@ function logStatus(message: string, kind: 'ok' | 'err' = 'ok'): void {
 	statusEl.appendChild(line);
 }
 
-saveBtn.addEventListener('click', async () => {
+async function saveFiles(chosen: GroupSnapshot[], activeSettings: Settings): Promise<void> {
+	for (const group of chosen) {
+		const note = await renderNote(group, activeSettings);
+		const blob = new Blob([note.content], { type: 'text/markdown' });
+		const url = URL.createObjectURL(blob);
+		try {
+			const link = document.createElement('a');
+			link.href = url;
+			link.download = `${note.fileName}.md`;
+			document.body.appendChild(link);
+			link.click();
+			link.remove();
+		} finally {
+			URL.revokeObjectURL(url);
+		}
+	}
+	logStatus(`Saved ${chosen.length} file(s).`);
+}
+
+async function copyToClipboard(chosen: GroupSnapshot[], activeSettings: Settings): Promise<void> {
+	const notes = await Promise.all(chosen.map((group) => renderNote(group, activeSettings)));
+	const text = notes.map((note) => note.content).join('\n\n---\n\n');
+	await navigator.clipboard.writeText(text);
+	logStatus(`Copied ${chosen.length} note(s).`);
+}
+
+async function performAction(action: Action): Promise<void> {
 	statusEl.innerHTML = '';
 	const chosen = selectedGroups();
 	if (chosen.length === 0) {
 		logStatus('Pick at least one group.', 'err');
 		return;
 	}
-	if (!settings.vaultName) {
+	// Only the Obsidian hand-off needs a vault; Save file and Copy work without one.
+	if (action === 'addToObsidian' && !settings.vaultName) {
 		logStatus('Add a vault name in settings first.', 'err');
 		return;
 	}
@@ -112,14 +227,25 @@ saveBtn.addEventListener('click', async () => {
 		closeGroupAfterSaving: activeSettings.closeGroupAfterSaving
 	});
 
-	// The save page takes it from here; opening it closes this popup.
-	saveBtn.disabled = true;
+	primaryBtn.disabled = true;
+	moreBtn.disabled = true;
 	try {
-		await startSaveJob(chosen, activeSettings, windowId!);
+		if (action === 'addToObsidian') {
+			// The save page takes it from here; opening it closes this popup.
+			await startSaveJob(chosen, activeSettings, windowId!);
+		} else if (action === 'saveFile') {
+			await saveFiles(chosen, activeSettings);
+		} else {
+			await copyToClipboard(chosen, activeSettings);
+		}
 	} catch (err) {
-		logStatus(`Failed to save: ${String(err)}`, 'err');
-		saveBtn.disabled = false;
+		logStatus(`Failed: ${String(err)}`, 'err');
+	} finally {
+		primaryBtn.disabled = false;
+		moreBtn.disabled = false;
 	}
-});
+}
+
+primaryBtn.addEventListener('click', () => performAction(settings.primaryAction));
 
 init();
