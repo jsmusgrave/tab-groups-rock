@@ -29,6 +29,8 @@ Click the toolbar icon (or press `Cmd+Shift+G` / `Ctrl+Shift+G`). Check the grou
 
 Right-clicking a page and choosing **Save this tab's group to Obsidian** saves that tab's group without opening the popup.
 
+The ▾ button next to the main button offers **Save file** (downloads one Markdown file per selected group) and **Copy to clipboard**. Neither needs Obsidian or a vault name. Settings lets you choose which of the three actions the main button performs.
+
 When **Also save each group as a bookmark folder** is on in settings (the default), each archived group is also written as a Chrome bookmark folder under **Other bookmarks → Archived groups → *YYYY-MM* → *group title***. To reopen it as a tab group later, right-click that folder in the bookmarks bar or bookmark manager and choose **Open all in new tab group**.
 
 Chrome keeps its own entry for every group under the Chrome menu's Tab groups, and no extension can remove it. After archiving, use Delete group there if you want it gone.

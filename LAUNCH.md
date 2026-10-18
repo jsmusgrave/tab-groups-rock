@@ -12,13 +12,13 @@ Tick items as they're done. Order within a section is suggested, not required. S
 
 ## 2. v1 features
 
-- [ ] **Bookmark folder destination.** Each archived group also written to `Other bookmarks / Archived groups / YYYY-MM / <group title>`. On by default. Adds the `bookmarks` permission.
-- [ ] **Select all** control above the group picker.
-- [ ] **Save file** and **Copy to clipboard** as secondary actions on the popup, so the note is recoverable when Obsidian isn't installed or the prompt was cancelled.
-- [ ] **First-run hint** on the save page: Chrome will ask to open Obsidian; tick "Always allow" to skip it next time.
-- [ ] **Saved-group note** after closing tabs (case 9 confirmed it): "Chrome still lists this group under Tab groups. Use Delete group there to remove it."
-- [ ] **Wording:** save page status "Sent" → "Handed to Obsidian".
-- [ ] `TESTING.md` extended with cases for the new features, full pass re-run.
+- [x] **Bookmark folder destination.** Each archived group also written to `Other bookmarks / Archived groups / YYYY-MM / <group title>`. On by default. Adds the `bookmarks` permission.
+- [x] **Select all** control above the group picker.
+- [x] **Save file** and **Copy to clipboard** as secondary actions on the popup, so the note is recoverable when Obsidian isn't installed or the prompt was cancelled.
+- [x] **First-run hint** on the save page: Chrome will ask to open Obsidian; tick "Always allow" to skip it next time.
+- [x] **Saved-group note** after closing tabs (case 9 confirmed it): "Chrome still lists this group under Tab groups. Use Delete group there to remove it."
+- [x] **Wording:** save page status "Sent" → "Handed to Obsidian".
+- [ ] `TESTING.md` extended with cases 11–22 (done); full pass re-run.
 
 ## 3. Code hygiene
 
