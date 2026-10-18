@@ -53,7 +53,7 @@ Each case starts from the setup state unless it says otherwise. "Note arrived" m
 | 6 | pass |  |
 | 7 | pass |  |
 | 8 | pass |  |
-| 9 | pass | Leftover entry under Chrome menu → Tab groups: _not recorded_ |
+| 9 | pass | Yes: after Close, the group is still listed under Chrome menu → Tab groups. The extension cannot remove it; the user must use Delete group there. |
 | 10 | pass |  |
 
 Result values: **pass**, **fail**, **skip**. Put what you actually saw in Notes for anything other than pass.

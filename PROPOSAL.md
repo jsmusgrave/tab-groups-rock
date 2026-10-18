@@ -199,7 +199,7 @@ Not yet present: `_locales`, tests, CI, `docs/`.
 8. **Firefox** (139+) and **Edge** listings.
 9. **Template directory** of community templates.
 
-Known limit (2026-09-28): there is no extension API to delete one of Chrome's saved groups or to tell whether a group is saved. Closing a saved group's tabs may leave its entry in the Chrome menu's Tab groups list; clearing that is manual.
+Known limit (confirmed 2026-10-18 on Chrome 155): there is no extension API to delete one of Chrome's saved groups, and recent Chrome saves every group automatically. Closing a group's tabs through the extension leaves its entry under the Chrome menu's Tab groups; the user removes it with Delete group there. The save page tells them so after closing.
 
 ## 10. Naming
 
@@ -224,7 +224,7 @@ Order chosen so each step is testable on its own.
 
 From the 2026-09-22 code review. Items 1–6 were fixed the same day (§13); what remains:
 
-1. **Not yet tested in Chrome:** the save-page refactor as a whole (multi-group Send next, context menu path, close confirmation) and the fixes below. Single-group save was verified before the refactor. Also check whether closing a *saved* group's tabs leaves its entry in the Chrome menu (§9).
+1. ~~Not yet tested in Chrome.~~ Full `TESTING.md` pass on 2026-10-18, Chrome 155, all cases pass. The saved-group leftover is confirmed (§9).
 2. **Unverified assumptions** carried from the debugging session: Chrome blocks external-protocol launches from inactive tabs; `execCommand('copy')` works in an unfocused extension page with `clipboardWrite`; focus loss reliably means Obsidian took over. None blocks shipping, but the second is the fallback path when `navigator.clipboard` is unavailable and has not been exercised.
 3. **`{% if skipped %}` is correct as written.** The original draft's `skipped | length > 0` is not valid knap; noted so nobody "fixes" it back.
 4. **Rendering in the service worker.** The context-menu path bundles knap into `background.js` (~100 KB minified). Acceptable; revisit only if worker start-up becomes noticeable.

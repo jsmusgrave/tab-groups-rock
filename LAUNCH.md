@@ -6,9 +6,9 @@ Tick items as they're done. Order within a section is suggested, not required. S
 
 ## 1. Verify the current build
 
-- [ ] `TESTING.md` run to completion on a fresh `npm run build`, results table filled in and committed.
-- [ ] Case 9 result recorded: does a closed group still appear under Chrome menu → Tab groups?
-- [ ] Any failures fixed and the failing cases re-run.
+- [x] `TESTING.md` run to completion on a fresh `npm run build`, results table filled in and committed (2026-10-18).
+- [x] Case 9 result recorded: yes, a closed group still appears under Chrome menu → Tab groups.
+- [x] Any failures fixed and the failing cases re-run. (None.)
 
 ## 2. v1 features
 
@@ -16,7 +16,7 @@ Tick items as they're done. Order within a section is suggested, not required. S
 - [ ] **Select all** control above the group picker.
 - [ ] **Save file** and **Copy to clipboard** as secondary actions on the popup, so the note is recoverable when Obsidian isn't installed or the prompt was cancelled.
 - [ ] **First-run hint** on the save page: Chrome will ask to open Obsidian; tick "Always allow" to skip it next time.
-- [ ] **Saved-group note** after closing tabs, if case 9 confirms it: "Chrome still lists this group under Tab groups. Use Delete group there to remove it."
+- [ ] **Saved-group note** after closing tabs (case 9 confirmed it): "Chrome still lists this group under Tab groups. Use Delete group there to remove it."
 - [ ] **Wording:** save page status "Sent" → "Handed to Obsidian".
 - [ ] `TESTING.md` extended with cases for the new features, full pass re-run.
 
