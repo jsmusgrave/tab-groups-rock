@@ -1,5 +1,6 @@
+import { writeGroupBookmarks } from './bookmarks';
 import { renderNote } from './render';
-import type { GroupSnapshot, SaveJob, Settings } from './types';
+import type { GroupSnapshot, JobNote, SaveJob, Settings } from './types';
 
 const JOB_KEY_PREFIX = 'saveJob:';
 
@@ -8,11 +9,25 @@ const JOB_KEY_PREFIX = 'saveJob:';
 // as focus moves) doesn't have to stay alive.
 export async function startSaveJob(groups: GroupSnapshot[], settings: Settings, windowId: number): Promise<void> {
 	const notes = await Promise.all(
-		groups.map(async (group) => ({
-			groupTitle: group.title,
-			note: await renderNote(group, settings),
-			tabIds: group.allTabIds
-		}))
+		groups.map(async (group): Promise<JobNote> => {
+			const note = await renderNote(group, settings);
+			let bookmarkPath: string | undefined;
+			if (settings.writeBookmarks) {
+				try {
+					bookmarkPath = await writeGroupBookmarks(group);
+				} catch (err) {
+					// The Obsidian note is what matters; a bookmark-folder failure
+					// should never block or break that flow.
+					console.error('Tab Groups Rock: failed to write bookmark folder for group', group.title, err);
+				}
+			}
+			return {
+				groupTitle: group.title,
+				note,
+				tabIds: group.allTabIds,
+				bookmarkPath
+			};
+		})
 	);
 	const job: SaveJob = {
 		vaultName: settings.vaultName,
