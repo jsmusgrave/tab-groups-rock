@@ -31,7 +31,7 @@ Each case starts from the setup state unless it says otherwise. "Note arrived" m
 | 6 | Context menu | Right-click the page in a Beta tab → **Save this tab's group to Obsidian**. | Save page opens directly, no popup. Beta's note arrives. |
 | 7 | Restricted page | Open `chrome://settings` and drag it into Alpha. Save Alpha. | Note has the 3 normal tabs as links and a **Not archived** section listing the `chrome://settings` URL. |
 | 8 | Awkward title | Rename Alpha to `yes`. Open a GitHub issue page (title contains `]`) in Alpha. Save Alpha. | Frontmatter shows `title: "yes"` with quotes. The GitHub link renders as a clickable link in Obsidian reading view, with the brackets visible in the text. |
-| 9 | Saved group leftover | Right-click Beta's label → **Save group** (a pill appears on the bookmarks bar). Archive Beta with close ticked, click Close. | Tabs close. Then check the Chrome menu → **Tab groups**, and the bookmarks bar: is Beta still listed? Record what you see; either answer is useful. |
+| 9 | Saved group leftover | Recent Chrome saves every group automatically (the group bubble shows **Close group** and **Delete group**, no Save toggle). Archive Beta with close ticked, click Close. | Tabs close. Then open the Chrome menu (⋮) → **Tab groups**: is Beta still listed? Record yes or no in Notes; either answer is useful. |
 | 10 | No vault configured | Clear the vault name in settings. Open the popup. | A notice with a settings link is shown. Add to Obsidian reports an error instead of opening the save page. Restore the vault name afterwards. |
 
 ## Things to note while testing
