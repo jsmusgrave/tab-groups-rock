@@ -21,7 +21,9 @@ npm run build
 
 Then in Chrome open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked**, and choose the `dist/` folder. Open the extension's settings and enter your vault name exactly as Obsidian shows it.
 
-`npm run watch` rebuilds on change; reload the extension in `chrome://extensions` to pick up the new build.
+`npm run watch` rebuilds on change; reload the extension in `chrome://extensions` to pick up the new build. `npm test` runs the unit tests and `npm run typecheck` runs the compiler. A production `npm run build` also writes the store upload to `builds/tab-groups-rock-<version>.zip`.
+
+User-facing strings live in `src/_locales/en/messages.json`. Translations are welcome: copy the folder to `src/_locales/<lang>/` and translate the `message` values.
 
 ## Usage
 

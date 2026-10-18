@@ -1,11 +1,12 @@
 import { collectGroups } from './lib/collect';
 import { startSaveJob } from './lib/job';
 import { getSettings } from './lib/storage';
+import { t } from './lib/i18n';
 
 chrome.runtime.onInstalled.addListener(() => {
 	chrome.contextMenus.create({
 		id: 'save-tab-group',
-		title: "Save this tab's group to Obsidian",
+		title: t('contextMenuSave'),
 		contexts: ['page']
 	});
 });

@@ -3,13 +3,14 @@ import { startSaveJob } from './lib/job';
 import { renderNote } from './lib/render';
 import { getSettings, setSettings } from './lib/storage';
 import type { GroupSnapshot, Settings } from './lib/types';
+import { t, translatePage } from './lib/i18n';
 
 type Action = Settings['primaryAction'];
 
 const ACTION_LABELS: Record<Action, string> = {
-	addToObsidian: 'Add to Obsidian',
-	saveFile: 'Save file',
-	copyToClipboard: 'Copy to clipboard'
+	addToObsidian: t('actionAddToObsidian'),
+	saveFile: t('actionSaveFile'),
+	copyToClipboard: t('actionCopyToClipboard')
 };
 
 const ACTION_ORDER: Action[] = ['addToObsidian', 'saveFile', 'copyToClipboard'];
@@ -38,6 +39,7 @@ openSettingsLink.addEventListener('click', (event) => {
 });
 
 async function init(): Promise<void> {
+	translatePage();
 	settings = await getSettings();
 	noVaultNotice.hidden = Boolean(settings.vaultName);
 	folderInput.value = settings.folder;
@@ -106,7 +108,10 @@ document.addEventListener('keydown', (event) => {
 function renderGroupList(preselectGroupId: number | null): void {
 	groupListEl.innerHTML = '';
 	if (groups.length === 0) {
-		groupListEl.innerHTML = '<div class="empty-state">No tab groups or tabs in this window.</div>';
+		const empty = document.createElement('div');
+		empty.className = 'empty-state';
+		empty.textContent = t('emptyWindow');
+		groupListEl.appendChild(empty);
 		return;
 	}
 	for (const group of groups) {
@@ -124,7 +129,7 @@ function renderGroupList(preselectGroupId: number | null): void {
 
 		const title = document.createElement('span');
 		title.className = 'title';
-		title.textContent = group.isUngrouped ? 'Ungrouped tabs' : group.title;
+		title.textContent = group.isUngrouped ? t('ungroupedTabs') : group.title;
 
 		const count = document.createElement('span');
 		count.className = 'count';
@@ -194,26 +199,26 @@ async function saveFiles(chosen: GroupSnapshot[], activeSettings: Settings): Pro
 			URL.revokeObjectURL(url);
 		}
 	}
-	logStatus(`Saved ${chosen.length} file(s).`);
+	logStatus(t('savedFiles', String(chosen.length)));
 }
 
 async function copyToClipboard(chosen: GroupSnapshot[], activeSettings: Settings): Promise<void> {
 	const notes = await Promise.all(chosen.map((group) => renderNote(group, activeSettings)));
 	const text = notes.map((note) => note.content).join('\n\n---\n\n');
 	await navigator.clipboard.writeText(text);
-	logStatus(`Copied ${chosen.length} note(s).`);
+	logStatus(t('copiedNotes', String(chosen.length)));
 }
 
 async function performAction(action: Action): Promise<void> {
 	statusEl.innerHTML = '';
 	const chosen = selectedGroups();
 	if (chosen.length === 0) {
-		logStatus('Pick at least one group.', 'err');
+		logStatus(t('pickOneGroup'), 'err');
 		return;
 	}
 	// Only the Obsidian hand-off needs a vault; Save file and Copy work without one.
 	if (action === 'addToObsidian' && !settings.vaultName) {
-		logStatus('Add a vault name in settings first.', 'err');
+		logStatus(t('addVaultFirst'), 'err');
 		return;
 	}
 
@@ -239,7 +244,7 @@ async function performAction(action: Action): Promise<void> {
 			await copyToClipboard(chosen, activeSettings);
 		}
 	} catch (err) {
-		logStatus(`Failed: ${String(err)}`, 'err');
+		logStatus(t('failed', String(err)), 'err');
 	} finally {
 		primaryBtn.disabled = false;
 		moreBtn.disabled = false;

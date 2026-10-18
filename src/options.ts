@@ -1,5 +1,6 @@
 import { getSettings, setSettings } from './lib/storage';
 import type { Settings } from './lib/types';
+import { t, translatePage } from './lib/i18n';
 
 const vaultNameInput = document.getElementById('vault-name') as HTMLInputElement;
 const folderInput = document.getElementById('folder') as HTMLInputElement;
@@ -12,7 +13,7 @@ const savedIndicator = document.getElementById('saved-indicator') as HTMLDivElem
 let saveTimeout: number | undefined;
 
 function showSaved(): void {
-	savedIndicator.textContent = 'Saved.';
+	savedIndicator.textContent = t('saved');
 	window.clearTimeout(saveTimeout);
 	saveTimeout = window.setTimeout(() => {
 		savedIndicator.textContent = '';
@@ -20,6 +21,7 @@ function showSaved(): void {
 }
 
 async function init(): Promise<void> {
+	translatePage();
 	const settings = await getSettings();
 	vaultNameInput.value = settings.vaultName;
 	folderInput.value = settings.folder;

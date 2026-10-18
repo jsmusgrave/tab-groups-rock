@@ -6,14 +6,17 @@
 	"license": "MIT",
 	"scripts": {
 		"build": "node build.mjs",
-		"watch": "node build.mjs --watch"
+		"watch": "node build.mjs --watch",
+		"typecheck": "tsc --noEmit -p tsconfig.json",
+		"test": "vitest run"
 	},
 	"dependencies": {
 		"knap": "0.6.0"
 	},
 	"devDependencies": {
 		"@types/chrome": "^0.0.280",
-		"esbuild": "^0.24.0",
-		"typescript": "^5.6.3"
+		"esbuild": "^0.28.2",
+		"typescript": "^5.6.3",
+		"vitest": "^5.0.5"
 	}
 }

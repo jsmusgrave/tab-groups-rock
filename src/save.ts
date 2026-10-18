@@ -16,6 +16,7 @@ import { writeClipboard } from './lib/clipboard';
 import { takeSaveJob } from './lib/job';
 import type { SaveJob } from './lib/types';
 import { buildObsidianUri } from './lib/writers/uri';
+import { t, translatePage } from './lib/i18n';
 
 type NoteStatus = 'waiting' | 'sent' | 'sent-in-uri';
 
@@ -58,17 +59,17 @@ function render(): void {
 		if (item.bookmarkPath) {
 			const bookmark = document.createElement('span');
 			bookmark.className = 'bookmark-path';
-			bookmark.textContent = `Bookmarked to ${item.bookmarkPath}`;
+			bookmark.textContent = t('bookmarkedTo', item.bookmarkPath);
 			info.appendChild(bookmark);
 		}
 		const status = document.createElement('span');
 		status.className = `status ${statuses[i]}`;
 		status.textContent =
 			statuses[i] === 'waiting'
-				? 'Waiting'
+				? t('statusWaiting')
 				: statuses[i] === 'sent'
-					? 'Handed to Obsidian'
-					: 'Handed to Obsidian (clipboard unavailable, sent in link)';
+					? t('statusHanded')
+					: t('statusHandedInUri');
 		row.append(info, status);
 		noteListEl.appendChild(row);
 	});
@@ -77,33 +78,32 @@ function render(): void {
 		nextBtn.hidden = true;
 		closeTabsBtn.hidden = true;
 		doneBtn.hidden = false;
-		doneBtn.textContent = 'Done';
-		messageEl.textContent =
-			'Tabs closed. Chrome still lists this group under the Chrome menu → Tab groups; use Delete group there if you want it gone.';
+		doneBtn.textContent = t('done');
+		messageEl.textContent = t('tabsClosedMessage');
 		return;
 	}
 
 	const allSent = nextIndex >= job.notes.length;
 	nextBtn.hidden = allSent;
 	if (!allSent) {
-		nextBtn.textContent = `Send next: ${job.notes[nextIndex].groupTitle}`;
-		messageEl.textContent = 'Check that the note arrived in Obsidian, then send the next one.';
+		nextBtn.textContent = t('sendNext', job.notes[nextIndex].groupTitle);
+		messageEl.textContent = t('checkThenSendNext');
 	}
 
 	const closable = closableTabIds();
 	const offerClose = allSent && job.closeAfterSaving && closable.length > 0;
 	closeTabsBtn.hidden = !offerClose;
 	if (offerClose) {
-		closeTabsBtn.textContent = closable.length === 1 ? 'Close 1 tab' : `Close ${closable.length} tabs`;
+		closeTabsBtn.textContent = closable.length === 1 ? t('closeOneTab') : t('closeTabs', String(closable.length));
 	}
 	doneBtn.hidden = !allSent;
-	doneBtn.textContent = offerClose ? 'Keep tabs' : 'Done';
+	doneBtn.textContent = offerClose ? t('keepTabs') : t('done');
 	if (allSent) {
 		messageEl.textContent = offerClose
-			? 'Once the notes show up in Obsidian, close the tabs you saved?'
-			: 'All notes sent to Obsidian.';
+			? t('confirmClose')
+			: t('allSent');
 		if (job.notes.some((_, i) => statuses[i] === 'sent-in-uri') && job.closeAfterSaving) {
-			messageEl.textContent += ' Groups sent without the clipboard stay open, in case the note was cut short.';
+			messageEl.textContent += ' ' + t('sentInUriStayOpen');
 		}
 	}
 }
@@ -145,25 +145,26 @@ async function maybeShowFirstRunHint(): Promise<void> {
 }
 
 async function init(): Promise<void> {
+	translatePage();
 	const jobId = new URLSearchParams(location.search).get('job');
 	const loaded = jobId ? await takeSaveJob(jobId) : null;
 	if (!loaded || loaded.notes.length === 0) {
-		headingEl.textContent = 'Nothing to save';
-		messageEl.textContent = 'This save has already run. You can close this tab.';
+		headingEl.textContent = t('nothingToSave');
+		messageEl.textContent = t('alreadyRun');
 		doneBtn.hidden = false;
 		doneBtn.addEventListener('click', closeSelf);
 		return;
 	}
 	job = loaded;
 	statuses = job.notes.map(() => 'waiting');
-	headingEl.textContent = job.notes.length === 1 ? 'Saving to Obsidian' : `Saving ${job.notes.length} groups to Obsidian`;
+	headingEl.textContent = job.notes.length === 1 ? t('savingTitle') : t('savingGroupsTitle', String(job.notes.length));
 	maybeShowFirstRunHint().catch(() => undefined);
 
 	await sendNext();
 	if (job.notes.length === 1 && !job.closeAfterSaving) {
-		messageEl.textContent = 'This tab closes on its own once Obsidian opens.';
+		messageEl.textContent = t('closesOnItsOwn');
 		doneBtn.hidden = false;
-		doneBtn.textContent = 'Close now';
+		doneBtn.textContent = t('closeNow');
 		doneBtn.addEventListener('click', closeSelf);
 		runFireAndForget();
 	} else {

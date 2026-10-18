@@ -22,10 +22,10 @@ Tick items as they're done. Order within a section is suggested, not required. S
 
 ## 3. Code hygiene
 
-- [ ] `_locales/en/messages.json`; manifest `name` and `description` via `__MSG_`; `default_locale: "en"`; `data-i18n` on popup, save, and options pages.
-- [ ] `THIRD_PARTY_NOTICES.md` listing knap (MIT).
-- [ ] Vitest with tests for `collect`, `render`, `frontmatter`, `filename`. Not a store requirement; do it if time allows.
-- [ ] `npm run build` also writes `builds/tab-groups-rock-<version>.zip` from `dist/`.
+- [x] `_locales/en/messages.json`; manifest `name` and `description` via `__MSG_`; `default_locale: "en"`; `data-i18n` on popup, save, and options pages.
+- [x] `THIRD_PARTY_NOTICES.md` listing knap (MIT).
+- [x] Vitest with tests for `collect`, `render`, `frontmatter`, `filename` (`npm test`, 12 tests).
+- [x] `npm run build` also writes `builds/tab-groups-rock-<version>.zip` from `dist/` (source maps excluded).
 - [ ] Version bumped to `1.0.0` in `manifest.chrome.json` and `package.json`.
 - [ ] `.github/workflows/ci.yml`: install, typecheck, test, build, upload the zip as an artifact.
 - [ ] README updated for the bookmark destination, the tip link, and the "Chrome still lists the group" caveat.

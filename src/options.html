@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>Tab Groups Rock — Settings</title>
+	<title data-i18n="optionsTitle">Tab Groups Rock — Settings</title>
 	<style>
 		:root {
 			color-scheme: light dark;
@@ -78,40 +78,40 @@
 	</style>
 </head>
 <body>
-	<h1>Tab Groups Rock — Settings</h1>
+	<h1 data-i18n="optionsTitle">Tab Groups Rock — Settings</h1>
 
 	<fieldset>
-		<legend>Obsidian</legend>
-		<label class="field" for="vault-name">Vault name (must match Obsidian exactly)</label>
-		<input id="vault-name" type="text" placeholder="e.g. test-vault" />
+		<legend data-i18n="sectionObsidian">Obsidian</legend>
+		<label class="field" for="vault-name" data-i18n="vaultNameLabel">Vault name (must match Obsidian exactly)</label>
+		<input id="vault-name" type="text" data-i18n-placeholder="vaultNamePlaceholder" />
 
-		<label class="field" for="folder">Default folder</label>
+		<label class="field" for="folder" data-i18n="defaultFolderLabel">Default folder</label>
 		<input id="folder" type="text" placeholder="Tab Groups/" />
 	</fieldset>
 
 	<fieldset>
-		<legend>Popup</legend>
-		<label class="field" for="primary-action">Main button action (the other two stay in the &#9662; menu)</label>
+		<legend data-i18n="sectionPopup">Popup</legend>
+		<label class="field" for="primary-action" data-i18n="primaryActionLabel">Main button action</label>
 		<select id="primary-action">
-			<option value="addToObsidian">Add to Obsidian</option>
-			<option value="saveFile">Save file</option>
-			<option value="copyToClipboard">Copy to clipboard</option>
+			<option value="addToObsidian" data-i18n="actionAddToObsidian">Add to Obsidian</option>
+			<option value="saveFile" data-i18n="actionSaveFile">Save file</option>
+			<option value="copyToClipboard" data-i18n="actionCopyToClipboard">Copy to clipboard</option>
 		</select>
 	</fieldset>
 
 	<fieldset>
-		<legend>Behavior</legend>
+		<legend data-i18n="sectionBehavior">Behavior</legend>
 		<label class="checkbox">
 			<input id="skip-pinned" type="checkbox" />
-			Skip pinned tabs
+			<span data-i18n="skipPinned">Skip pinned tabs</span>
 		</label>
 		<label class="checkbox">
 			<input id="skip-restricted" type="checkbox" />
-			List chrome:// and other restricted pages under "Not archived" instead of erroring
+			<span data-i18n="skipRestricted"></span>
 		</label>
 		<label class="checkbox">
 			<input id="write-bookmarks" type="checkbox" />
-			Also save each group as a bookmark folder under Archived groups (Chrome can reopen it as a group)
+			<span data-i18n="writeBookmarks"></span>
 		</label>
 	</fieldset>
 

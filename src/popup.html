@@ -3,33 +3,33 @@
 <head>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="popup.css" />
-	<title>Tab Groups Rock</title>
+	<title data-i18n="extensionName">Tab Groups Rock</title>
 </head>
 <body>
 	<header>
-		<h1>Tab Groups Rock</h1>
-		<button id="settings-btn" title="Settings" aria-label="Settings">&#9881;</button>
+		<h1 data-i18n="extensionName">Tab Groups Rock</h1>
+		<button id="settings-btn" data-i18n-title="settings" aria-label="Settings">&#9881;</button>
 	</header>
 
 	<div id="no-vault-notice" hidden>
-		No vault configured yet. <a href="#" id="open-settings-link">Add a vault name in settings</a>.
+		<span data-i18n="noVaultNotice">No vault configured yet.</span> <a href="#" id="open-settings-link" data-i18n="noVaultLink">Add a vault name in settings</a>.
 	</div>
 
 	<label class="select-all-row" id="select-all-row" hidden>
 		<input id="select-all-checkbox" type="checkbox" />
-		Select all
+		<span data-i18n="selectAll">Select all</span>
 	</label>
 
 	<div id="group-list"></div>
 
 	<div class="field-row">
-		<label for="folder-input">Folder</label>
+		<label for="folder-input" data-i18n="folder">Folder</label>
 		<input id="folder-input" type="text" />
 	</div>
 
 	<label class="checkbox-row">
 		<input id="close-after-save" type="checkbox" />
-		Close group after saving
+		<span data-i18n="closeGroupAfterSaving">Close group after saving</span>
 	</label>
 
 	<div class="actions">
@@ -40,14 +40,12 @@
 				class="more"
 				aria-haspopup="true"
 				aria-expanded="false"
-				title="Run another action once. This does not change your default action, which is set in Settings."
+				data-i18n-title="moreMenuTitle"
 			>&#9662;</button>
 			<div id="more-menu" class="more-menu" hidden></div>
 		</div>
 	</div>
-	<p class="helper-text">
-		The &#9662; menu runs an action once without changing your default (set in Settings).
-	</p>
+	<p class="helper-text" data-i18n="moreMenuHelp"></p>
 
 	<div id="status"></div>
 

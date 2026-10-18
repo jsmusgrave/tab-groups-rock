@@ -177,7 +177,7 @@ src/
 
 Permissions: `tabs`, `tabGroups`, `storage`, `clipboardWrite`, `contextMenus`. No host permissions, no content scripts.
 
-Not yet present: `_locales`, tests, CI, `docs/`.
+Added 2026-10-18: `src/_locales/en/messages.json` with `src/lib/i18n.ts`, Vitest tests under `src/lib/__tests__/`, `THIRD_PARTY_NOTICES.md`, and zip output from the build. Not yet present: CI, `docs/`.
 
 ## 8. Publishing and product considerations
 
