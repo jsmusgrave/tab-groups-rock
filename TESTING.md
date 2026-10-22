@@ -26,7 +26,7 @@ After the save-page auto-close change. Work top to bottom: case 11 needs a fresh
 
 - [x] **11.** First-run hint
 - [x] **1.** Single group (retest: depends on the save tab closing on its own; now also returns to the tab you started from)
-- [ ] **2.** Cancelled prompt (retest: depends on the save tab closing on its own)
+- [x] **2.** Cancelled prompt (retest: depends on the save tab closing on its own)
 - [ ] **6.** Context menu (retest: depends on the save tab closing on its own)
 - [ ] **12.** Status wording
 - [ ] **13.** Bookmark folder created
@@ -85,7 +85,7 @@ Each case starts from the setup state unless it says otherwise. "Note arrived" m
 | # | Result | Notes |
 |---|---|---|
 | 1 | pass | Retested 2026-10-22: returns to the tab the save started from. |
-| 2 | pass |  |
+| 2 | pass | Retested 2026-10-22 on a fresh profile, so Chrome's prompt appeared. |
 | 3 | pass |  |
 | 4a | pass |  |
 | 4b | pass |  |
