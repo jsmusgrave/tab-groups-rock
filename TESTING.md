@@ -25,7 +25,7 @@ Builds under test (commit IDs as of the 2026-10-22 history rewrite):
 After the save-page auto-close change. Work top to bottom: case 11 needs a fresh install, so it goes first. Tick each box as you go and record the result in the table at the bottom.
 
 - [x] **11.** First-run hint
-- [ ] **1.** Single group (retest: depends on the save tab closing on its own; now also returns to the tab you started from)
+- [x] **1.** Single group (retest: depends on the save tab closing on its own; now also returns to the tab you started from)
 - [ ] **2.** Cancelled prompt (retest: depends on the save tab closing on its own)
 - [ ] **6.** Context menu (retest: depends on the save tab closing on its own)
 - [ ] **12.** Status wording
@@ -84,7 +84,7 @@ Each case starts from the setup state unless it says otherwise. "Note arrived" m
 
 | # | Result | Notes |
 |---|---|---|
-| 1 | pass |  |
+| 1 | pass | Retested 2026-10-22: returns to the tab the save started from. |
 | 2 | pass |  |
 | 3 | pass |  |
 | 4a | pass |  |
