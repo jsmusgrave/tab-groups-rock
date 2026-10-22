@@ -50,8 +50,8 @@ All listing copy (descriptions, single purpose, permission justifications, priva
 - [ ] Publish with your existing personal Google account (decided 2026-10-22). The extension stays tied to it; moving it later takes a transfer request to Chrome Web Store support.
 - [ ] Chrome Web Store developer registration, one-time $5 fee.
 - [ ] Contact email set and verified in the developer account. It must receive mail, so not the GitHub no-reply address. It may be shown to users, so consider an alias that forwards to you (for example iCloud Hide My Email) rather than your main Gmail address.
-- [ ] GitHub repo public, with LICENSE, README, PROPOSAL, TESTING, LAUNCH, and the privacy page.
-- [ ] GitHub Pages on: repo Settings → Pages → Deploy from a branch → `main`, folder `/docs`. Check the privacy URL loads before submitting.
+- [x] GitHub repo public, with LICENSE, README, PROPOSAL, TESTING, LAUNCH, and the privacy page.
+- [x] GitHub Pages on (2026-10-22; privacy URL verified): repo Settings → Pages → Deploy from a branch → `main`, folder `/docs`. Check the privacy URL loads before submitting.
 - [ ] Tip link account (Buy Me a Coffee or similar) in your own name, if wanted.
 - [ ] Optional: USPTO quick search for "Tab Groups Rock".
 
