@@ -39,7 +39,7 @@ After the save-page auto-close change. Work top to bottom: case 11 needs a fresh
 - [x] **20.** Save file
 - [x] **21.** Copy without a vault
 - [x] **22.** Main button action setting
-- [ ] **23.** Keep the save page open
+- [x] **23.** Keep the save page open
 - [ ] **24.** Save from the middle of a group
 
 ## Cases
@@ -107,7 +107,7 @@ Each case starts from the setup state unless it says otherwise. "Note arrived" m
 | 20 | pass |  |
 | 21 | pass |  |
 | 22 | pass |  |
-| 23 | | |
+| 23 | pass |  |
 | 24 | | |
 
 Result values: **pass**, **fail**, **skip**. Put what you actually saw in Notes for anything other than pass.
