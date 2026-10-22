@@ -1,6 +1,6 @@
 {
 	"extensionName": { "message": "Tab Groups Rock" },
-	"extensionDescription": { "message": "Archive a Chrome tab group as a Markdown note in Obsidian, with a link to every tab." },
+	"extensionDescription": { "message": "Archive tab groups as Markdown notes in Obsidian, with a link to every tab, then close them and clear the clutter." },
 	"commandOpen": { "message": "Open Tab Groups Rock" },
 	"contextMenuSave": { "message": "Save this tab's group to Obsidian" },
 

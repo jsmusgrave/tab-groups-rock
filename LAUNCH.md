@@ -27,19 +27,21 @@ Tick items as they're done. Order within a section is suggested, not required. S
 - [x] Vitest with tests for `collect`, `render`, `frontmatter`, `filename` (`npm test`, 12 tests).
 - [x] `npm run build` also writes `builds/tab-groups-rock-<version>.zip` from `dist/` (source maps excluded).
 - [ ] Version bumped to `1.0.0` in `manifest.chrome.json` and `package.json`.
-- [ ] `.github/workflows/ci.yml`: install, typecheck, test, build, upload the zip as an artifact.
-- [ ] README updated for the bookmark destination, the tip link, and the "Chrome still lists the group" caveat.
+- [x] `.github/workflows/ci.yml`: install, typecheck, test, build, upload the zip as an artifact.
+- [x] README updated for the bookmark destination, the tip link (hidden placeholder until the account exists), and the "Chrome still lists the group" caveat. Also a CI badge, privacy link, and Support section.
 
 ## 4. Store assets
+
+All listing copy (descriptions, single purpose, permission justifications, privacy-tab answers) is in `store/listing.md`, ready to paste.
 
 - [x] **Icon:** final design in `icons/` (concept 9b: stacked tabs with a dark rock, no purple). 16/32/48/128 PNGs in the manifest, 128 for the store, `icon.svg` as source.
 - [ ] **Screenshots:** 1280×800 PNG. At least: the popup with groups checked; the save page after sending; the resulting note in Obsidian; the bookmark folder in Chrome. Use the test vault, not a real one.
 - [x] **Promo tile:** 440×280 at `store/promo-tile-440x280.png`, regenerated from the icon by `store/promo_tile.py`.
-- [ ] **Privacy policy** page on GitHub Pages from the repo (`docs/privacy.md` or similar). Says: reads titles and URLs of tabs in the groups you choose; writes them to Obsidian and, if enabled, Chrome bookmarks on your device; nothing is transmitted anywhere; no analytics, no accounts; settings stored in Chrome sync storage.
-- [ ] **Short description** (≤132 chars): "Archive a Chrome tab group as a Markdown note in Obsidian, with a link to every tab." or similar.
-- [ ] **Detailed description:** what it does, how it works (Obsidian URI + clipboard), the bookmark folder, why the `tabs` permission shows a "read your browsing history" warning, the saved-group caveat, link to the repo, tip link.
-- [ ] **Single-purpose statement:** "Archives Chrome tab groups as Markdown notes in Obsidian and as bookmark folders."
-- [ ] **Permission justifications**, one sentence each: `tabs`, `tabGroups`, `storage`, `clipboardWrite`, `contextMenus`, `bookmarks`.
+- [x] **Privacy policy** at `docs/privacy.md`, served by GitHub Pages at `https://jsmusgrave.github.io/tab-groups-rock/privacy` once Pages is on (section 5). Covers: reads titles and URLs only of tabs in the groups you choose; writes them to Obsidian, a downloaded file, or Chrome bookmarks; nothing transmitted; no analytics, no accounts; what's kept in sync, local, and session storage.
+- [x] **Short description** (≤132 chars), 114 characters, also the manifest description: "Archive tab groups as Markdown notes in Obsidian, with a link to every tab, then close them and clear the clutter."
+- [x] **Detailed description:** what it does, how it works (Obsidian URI + clipboard), the bookmark folder, why the `tabs` permission shows a "read your browsing history" warning, the saved-group caveat, link to the repo, tip link.
+- [x] **Single-purpose statement:** "Archives Chrome tab groups as Markdown notes in Obsidian and as bookmark folders."
+- [x] **Permission justifications**, one sentence each: `tabs`, `tabGroups`, `storage`, `clipboardWrite`, `contextMenus`, `bookmarks`.
 
 ## 5. Accounts
 
@@ -47,6 +49,7 @@ Tick items as they're done. Order within a section is suggested, not required. S
 - [ ] Chrome Web Store developer registration, one-time $5 fee.
 - [ ] Support email set on the account (can be the same account).
 - [ ] GitHub repo public, with LICENSE, README, PROPOSAL, TESTING, LAUNCH, and the privacy page.
+- [ ] GitHub Pages on: repo Settings → Pages → Deploy from a branch → `main`, folder `/docs`. Check the privacy URL loads before submitting.
 - [ ] Tip link account (Buy Me a Coffee or similar) in your own name, if wanted.
 - [ ] Optional: USPTO quick search for "Tab Groups Rock".
 

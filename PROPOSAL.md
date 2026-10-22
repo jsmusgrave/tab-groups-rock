@@ -177,7 +177,7 @@ src/
 
 Permissions: `tabs`, `tabGroups`, `storage`, `clipboardWrite`, `contextMenus`. No host permissions, no content scripts.
 
-Added 2026-10-18: `src/_locales/en/messages.json` with `src/lib/i18n.ts`, Vitest tests under `src/lib/__tests__/`, `THIRD_PARTY_NOTICES.md`, and zip output from the build. Not yet present: CI, `docs/`.
+Added 2026-10-18: `src/_locales/en/messages.json` with `src/lib/i18n.ts`, Vitest tests under `src/lib/__tests__/`, `THIRD_PARTY_NOTICES.md`, and zip output from the build. Added 2026-10-22: `.github/workflows/ci.yml` (typecheck, test, build, zip artifact), `docs/` for GitHub Pages (privacy policy), `store/` (promo tile and listing copy).
 
 ## 8. Publishing and product considerations
 

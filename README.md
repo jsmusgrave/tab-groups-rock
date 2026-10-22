@@ -1,16 +1,18 @@
 # Tab Groups Rock
 
+[![CI](https://github.com/jsmusgrave/tab-groups-rock/actions/workflows/ci.yml/badge.svg)](https://github.com/jsmusgrave/tab-groups-rock/actions/workflows/ci.yml)
+
 Save a Chrome tab group as a Markdown note in [Obsidian](https://obsidian.md), with a link to every tab.
 
 Chrome tab groups are great for organizing work, but there is no way to archive one. This extension turns a group (or a window's ungrouped tabs) into a note in your vault, then offers to close the tabs. Each note has typed frontmatter, one Markdown link per tab, and a collapsed JSON block so a future version can reopen the group.
 
-**Status:** early development. Not yet on the Chrome Web Store. See [PROPOSAL.md](PROPOSAL.md) for the design, decisions, and what is still to do.
+**Status:** preparing for the Chrome Web Store. See [PROPOSAL.md](PROPOSAL.md) for the design and decisions, [TESTING.md](TESTING.md) for the manual test plan, and [LAUNCH.md](LAUNCH.md) for what's left before release.
 
 ## How it works
 
 The extension uses the same mechanism as the official Obsidian Web Clipper: the note is copied to the clipboard and Obsidian is opened with an `obsidian://new` link that tells it to read the note body from the clipboard. No plugins, no servers, no accounts. Obsidian must be installed; nothing else is required.
 
-Permissions: `tabs` and `tabGroups` to read the titles and URLs of the tabs you choose, `storage` for settings, `clipboardWrite` for the hand-off, `contextMenus` for the right-click item, and `bookmarks` to also save each group as a bookmark folder. There are no host permissions and no content scripts. The extension never reads page content and never sends anything anywhere except to Obsidian on your own machine.
+Permissions: `tabs` and `tabGroups` to read the titles and URLs of the tabs you choose, `storage` for settings, `clipboardWrite` for the hand-off, `contextMenus` for the right-click item, and `bookmarks` to also save each group as a bookmark folder. There are no host permissions and no content scripts. The extension never reads page content and never sends anything anywhere except to Obsidian on your own machine. Full details are in the [privacy policy](https://jsmusgrave.github.io/tab-groups-rock/privacy).
 
 ## Install from source
 
@@ -36,6 +38,12 @@ The ▾ button next to the main button offers **Save file** (downloads one Markd
 When **Also save each group as a bookmark folder** is on in settings (the default), each archived group is also written as a Chrome bookmark folder under **Other bookmarks → Archived groups → *YYYY-MM* → *group title***. To reopen it as a tab group later, right-click that folder in the bookmarks bar or bookmark manager and choose **Open all in new tab group**.
 
 Chrome keeps its own entry for every group under the Chrome menu's Tab groups, and no extension can remove it. After archiving, use Delete group there if you want it gone.
+
+## Support
+
+Bug reports and ideas are welcome in [GitHub Issues](https://github.com/jsmusgrave/tab-groups-rock/issues).
+
+<!-- Tip link goes here once the account exists, e.g. "If it saves you some clutter, you can [buy me a coffee](<link>)." -->
 
 ## Acknowledgements
 
