@@ -37,7 +37,7 @@ After the save-page auto-close change. Work top to bottom: case 11 needs a fresh
 - [x] **18.** Close tabs, then Done
 - [x] **19.** Select all
 - [x] **20.** Save file
-- [ ] **21.** Copy without a vault
+- [x] **21.** Copy without a vault
 - [ ] **22.** Main button action setting
 - [ ] **23.** Keep the save page open
 - [ ] **24.** Save from the middle of a group
@@ -105,7 +105,7 @@ Each case starts from the setup state unless it says otherwise. "Note arrived" m
 | 18 | pass |  |
 | 19 | pass |  |
 | 20 | pass |  |
-| 21 | | |
+| 21 | pass |  |
 | 22 | | |
 | 23 | | |
 | 24 | | |
