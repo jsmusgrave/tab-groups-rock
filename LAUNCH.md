@@ -32,7 +32,7 @@ Tick items as they're done. Order within a section is suggested, not required. S
 
 ## 4. Store assets
 
-- [x] **Icon:** final design in `icons/` (stacked tabs with a dark rock, no purple). 16/32/48/128 PNGs in the manifest, 128 for the store (96px artwork with 16px transparent padding, per Chrome guidance), `icon.svg` as source.
+- [x] **Icon:** final design in `icons/` (stacked tabs with a dark rock, no purple). 16/32/48/128 PNGs in the manifest, 128 for the store, `icon.svg` as source.
 - [ ] **Screenshots:** 1280×800 PNG. At least: the popup with groups checked; the save page after sending; the resulting note in Obsidian; the bookmark folder in Chrome. Use the test vault, not a real one.
 - [ ] **Promo tile:** 440×280, optional but improves placement.
 - [ ] **Privacy policy** page on GitHub Pages from the repo (`docs/privacy.md` or similar). Says: reads titles and URLs of tabs in the groups you choose; writes them to Obsidian and, if enabled, Chrome bookmarks on your device; nothing is transmitted anywhere; no analytics, no accounts; settings stored in Chrome sync storage.
