@@ -5,7 +5,8 @@ Run this against a fresh `npm run build` whenever the save flow, the popup, or `
 Builds under test (commit IDs as of the 2026-10-22 history rewrite):
 
 - Cases 1–10: `c2ecee1` (source unchanged through `b522cf9`) · Chrome 155.0.8059.84 · 2026-10-18
-- Cases 11 onward: `ae7f7d8` (save-page auto-close setting) · 2026-10-22
+- Case 11: `ae7f7d8` (save-page auto-close setting) · 2026-10-22
+- Cases 1, 2, 6, 12 onward: the build that returns to the origin tab · 2026-10-22
 
 ## Setup
 
@@ -24,7 +25,7 @@ Builds under test (commit IDs as of the 2026-10-22 history rewrite):
 After the save-page auto-close change. Work top to bottom: case 11 needs a fresh install, so it goes first. Tick each box as you go and record the result in the table at the bottom.
 
 - [x] **11.** First-run hint
-- [ ] **1.** Single group (retest: depends on the save tab closing on its own)
+- [ ] **1.** Single group (retest: depends on the save tab closing on its own; now also returns to the tab you started from)
 - [ ] **2.** Cancelled prompt (retest: depends on the save tab closing on its own)
 - [ ] **6.** Context menu (retest: depends on the save tab closing on its own)
 - [ ] **12.** Status wording
@@ -39,6 +40,7 @@ After the save-page auto-close change. Work top to bottom: case 11 needs a fresh
 - [ ] **21.** Copy without a vault
 - [ ] **22.** Main button action setting
 - [ ] **23.** Keep the save page open
+- [ ] **24.** Save from the middle of a group
 
 ## Cases
 
@@ -46,7 +48,7 @@ Each case starts from the setup state unless it says otherwise. "Note arrived" m
 
 | # | Case | Steps | Expected |
 |---|---|---|---|
-| 1 | Single group | From a tab in Alpha, open the popup. Click **Add to Obsidian**. Allow Chrome's "Open Obsidian?" prompt. | Alpha was pre-checked. A save tab opened. Note arrived with Alpha's 3 tabs. Save tab closed on its own once Obsidian took focus. |
+| 1 | Single group | From a tab in Alpha, open the popup. Click **Add to Obsidian**. Allow Chrome's "Open Obsidian?" prompt. | Alpha was pre-checked. A save tab opened. Note arrived with Alpha's 3 tabs. Save tab opened right next to the Alpha tab, and closed on its own once Obsidian took focus. Back in Chrome, the Alpha tab you started from is the active tab, not the last tab in the strip. |
 | 2 | Cancelled prompt | As 1, but cancel the prompt. | Save tab stays open showing **Close now**. No note. Nothing closed. Close now closes the save tab. |
 | 3 | Two groups | Open the popup from Alpha. Check Alpha and Beta. Add to Obsidian, allow the prompt. | Alpha's note arrives. Save page lists both notes, Alpha marked Sent, and shows **Send next: Beta**. Click it; allow the prompt if shown. Beta's note arrives. Page shows **Done**. |
 | 4a | Close after saving, keep | Open the popup from Alpha. Tick **Close group after saving**. Save, allow the prompt. | After sending, page shows **Close 3 tabs** and **Keep tabs**. Click Keep. Save tab closes; Alpha's tabs are still open. |
@@ -70,6 +72,7 @@ Each case starts from the setup state unless it says otherwise. "Note arrived" m
 | 21 | Copy without a vault | Clear the vault name. Check one group, ▾ → **Copy to clipboard**. | No vault error. Popup says "Copied 1 note(s)." Pasting into a text editor gives that group's note. Restore the vault name. |
 | 22 | Main button action setting | Settings → Popup → set main button to **Save file**. Reopen the popup. | The main button reads **Save file**; the ▾ menu offers Add to Obsidian and Copy to clipboard. Set it back to Add to Obsidian. |
 | 23 | Keep the save page open | Settings → Behavior: turn **Close the save page automatically** off. Save Alpha (close unticked). | Note arrives. The save tab stays open with a **Done** button, and Alpha's tabs are untouched. Done closes the save tab. Turn the setting back on. |
+| 24 | Save from the middle of a group | Click Alpha's **second** tab, open the popup, and save Alpha with **Close the save page automatically** off. | The save tab appears just after Alpha's tabs, outside the group (if Chrome briefly puts it in the group, it leaves at once). Alpha's group never shows the save tab once the page has loaded. Click **Done**: Alpha's second tab is active again. |
 
 ## Things to note while testing
 
@@ -105,5 +108,6 @@ Each case starts from the setup state unless it says otherwise. "Note arrived" m
 | 21 | | |
 | 22 | | |
 | 23 | | |
+| 24 | | |
 
 Result values: **pass**, **fail**, **skip**. Put what you actually saw in Notes for anything other than pass.

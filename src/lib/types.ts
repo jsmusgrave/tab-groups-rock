@@ -56,5 +56,8 @@ export interface SaveJob {
 	vaultName: string;
 	closeAfterSaving: boolean;
 	closeSavePage: boolean;
+	// The tab the save started from. The save page opens next to it and
+	// switches back to it before closing, if it still exists.
+	originTabId?: number;
 	notes: JobNote[];
 }

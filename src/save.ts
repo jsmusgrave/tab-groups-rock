@@ -38,11 +38,25 @@ let statuses: NoteStatus[] = [];
 let nextIndex = 0;
 let tabsClosed = false;
 
-function closeSelf(): void {
-	chrome.tabs.getCurrent((tab) => {
-		if (tab?.id !== undefined) chrome.tabs.remove(tab.id);
-		else window.close();
-	});
+// Switches back to the tab the save started from, then closes this tab, so
+// Chrome doesn't fall back to whichever tab happens to be next to it. If the
+// origin tab is gone (its group was archived and closed), Chrome picks as usual.
+async function closeSelf(): Promise<void> {
+	const self = await chrome.tabs.getCurrent();
+	if (job?.originTabId !== undefined) {
+		await chrome.tabs.update(job.originTabId, { active: true }).catch(() => undefined);
+	}
+	if (self?.id !== undefined) await chrome.tabs.remove(self.id);
+	else window.close();
+}
+
+// Opened next to a grouped tab, this tab may have been added to that group.
+// Leaving it keeps the save page out of the group and out of Chrome's saved copy.
+async function leaveAnyGroup(): Promise<void> {
+	const self = await chrome.tabs.getCurrent();
+	if (self?.id !== undefined && self.groupId !== chrome.tabGroups.TAB_GROUP_ID_NONE) {
+		await chrome.tabs.ungroup(self.id);
+	}
 }
 
 function closableTabIds(): number[] {
@@ -150,6 +164,7 @@ async function maybeShowFirstRunHint(): Promise<boolean> {
 
 async function init(): Promise<void> {
 	translatePage();
+	leaveAnyGroup().catch(() => undefined);
 	const jobId = new URLSearchParams(location.search).get('job');
 	const loaded = jobId ? await takeSaveJob(jobId) : null;
 	if (!loaded || loaded.notes.length === 0) {

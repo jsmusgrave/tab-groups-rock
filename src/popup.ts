@@ -18,6 +18,7 @@ const ACTION_ORDER: Action[] = ['addToObsidian', 'saveFile', 'copyToClipboard'];
 let groups: GroupSnapshot[] = [];
 let settings: Settings;
 let windowId: number | undefined;
+let originTabId: number | undefined;
 
 const groupListEl = document.getElementById('group-list') as HTMLDivElement;
 const selectAllRow = document.getElementById('select-all-row') as HTMLLabelElement;
@@ -52,6 +53,7 @@ async function init(): Promise<void> {
 	if (windowId === undefined) return;
 
 	const [activeTab] = await chrome.tabs.query({ active: true, windowId });
+	originTabId = activeTab?.id;
 	groups = await collectGroups(windowId, settings);
 	// Pre-check the active tab's group. An ungrouped active tab only pre-checks
 	// the Ungrouped row when the window has no real groups, since it is usually
@@ -237,7 +239,7 @@ async function performAction(action: Action): Promise<void> {
 	try {
 		if (action === 'addToObsidian') {
 			// The save page takes it from here; opening it closes this popup.
-			await startSaveJob(chosen, activeSettings, windowId!);
+			await startSaveJob(chosen, activeSettings, windowId!, originTabId);
 		} else if (action === 'saveFile') {
 			await saveFiles(chosen, activeSettings);
 		} else {

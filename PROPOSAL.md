@@ -23,6 +23,7 @@
 | 2026-09-22 | **Clipboard courtesy removed** along with the `clipboardRead` permission. The install warning it caused outweighed the convenience. Could return via `optional_permissions` (§9). |
 | 2026-09-22 | Build with esbuild, no polyfill, no webpack. Chrome-only makes the Clipper's multi-browser toolchain unnecessary. |
 | 2026-10-22 | Setting **Close the save page automatically** (on by default) controls the single-note fire-and-forget close. The save page never auto-closes while the first-run hint is showing. |
+| 2026-10-22 | The save page opens right after the tab the save started from (not as its child, so Chrome doesn't add it to that tab's group), leaves any group it lands in, and switches back to that tab before closing. Closing used to land on whatever tab was last in the strip. |
 
 Deferred until publishing: developer identity and trader declaration (§8). Icon settled 2026-10-22 (concept 9b).
 

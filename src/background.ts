@@ -24,5 +24,5 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
 	const groups = await collectGroups(tab.windowId, settings);
 	// The ungrouped snapshot's id (-1) matches TAB_GROUP_ID_NONE.
 	const group = groups.find((snapshot) => snapshot.id === tab.groupId);
-	if (group) await startSaveJob([group], settings, tab.windowId);
+	if (group) await startSaveJob([group], settings, tab.windowId, tab.id);
 });
