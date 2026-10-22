@@ -23,7 +23,7 @@
 | 2026-09-22 | **Clipboard courtesy removed** along with the `clipboardRead` permission. The install warning it caused outweighed the convenience. Could return via `optional_permissions` (§9). |
 | 2026-09-22 | Build with esbuild, no polyfill, no webpack. Chrome-only makes the Clipper's multi-browser toolchain unnecessary. |
 
-Deferred until publishing: developer identity and trader declaration (§8), icon.
+Deferred until publishing: developer identity and trader declaration (§8). Icon settled 2026-10-22 (concept 9b).
 
 ## 1. Goal
 
@@ -183,7 +183,7 @@ Added 2026-10-18: `src/_locales/en/messages.json` with `src/lib/i18n.ts`, Vitest
 
 - **Chrome Web Store:** one-time $5 developer fee. Needs a hosted privacy policy, the Privacy tab data disclosures, and a single-purpose description. Policies enforced from 2026-08-01 require prominent disclosure of any data collection; ours is "reads titles and URLs of tabs in the groups you choose, sends them only to Obsidian on your device, no analytics". The `tabs` permission shows a "Read your browsing history" warning at install; the listing should explain why.
 - **Publishing identity:** the store shows a free-text publisher name independent of GitHub. The registering Google account is permanent (developer email cannot change), so use a dedicated or LLC-domain account if a paid fork under the same account is the plan. The EU Digital Services Act requires a trader / non-trader declaration; trader status means public contact details in the EU, where an LLC address helps. Support email and privacy policy URL are required; GitHub Pages on the repo hosts the policy for free.
-- **Trademark:** the Obsidian name, logo, and app icon are trademarks; the Clipper's MIT license excludes them. The product name contains no "Obsidian"; mention it only in descriptions. Original icon, no gem.
+- **Trademark:** the Obsidian name, logo, and app icon are trademarks; the Clipper's MIT license excludes them. The product name contains no "Obsidian"; mention it only in descriptions. Original icon: stacked tabs with a dark rock, not Obsidian's purple crystal.
 - **Licensing:** MIT. A closed-source paid fork later is permitted; MIT does not bind the copyright holder, and outside contributions can be included in proprietary builds as long as their notices stay. The public version stays forkable forever, so the name is the lever. Dependencies: knap (MIT). A THIRD_PARTY_NOTICES file is needed only if Clipper code is ported verbatim; the current `frontmatter.ts` and `filename.ts` are original.
 - **Privacy story:** no servers, no accounts, no host permissions, no content scripts, no clipboard reading. Say so on the listing.
 
@@ -218,7 +218,7 @@ Order chosen so each step is testable on its own.
 5. Multiple vaults with a popup dropdown, and editable note name when one row is checked.
 6. User-editable templates with import/export and property types. The largest remaining surface.
 7. Stats and history, about page.
-8. Store assets: real icon, screenshots, privacy policy on GitHub Pages, listing copy, a GitHub Action that builds and zips `dist/`.
+8. Store assets: screenshots, privacy policy on GitHub Pages, listing copy, a GitHub Action that builds and zips `dist/`.
 
 ## 12. Things to address
 
