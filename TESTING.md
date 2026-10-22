@@ -19,6 +19,27 @@ Builds under test (commit IDs as of the 2026-10-22 history rewrite):
    - 1 pinned, ungrouped tab
 5. Clear `Tab Groups/` in the test vault so new notes are easy to spot, and delete `Other bookmarks → Archived groups` in `chrome://bookmarks` if it exists from an earlier run.
 
+## Current retest (2026-10-22)
+
+After the save-page auto-close change. Work top to bottom: case 11 needs a fresh install, so it goes first. Tick each box as you go and record the result in the table at the bottom.
+
+- [x] **11.** First-run hint
+- [ ] **1.** Single group (retest: depends on the save tab closing on its own)
+- [ ] **2.** Cancelled prompt (retest: depends on the save tab closing on its own)
+- [ ] **6.** Context menu (retest: depends on the save tab closing on its own)
+- [ ] **12.** Status wording
+- [ ] **13.** Bookmark folder created
+- [ ] **14.** Two groups, one archive folder
+- [ ] **15.** Duplicate title does not merge
+- [ ] **16.** Reopen via Chrome
+- [ ] **17.** Bookmark folder off
+- [ ] **18.** Close tabs, then Done
+- [ ] **19.** Select all
+- [ ] **20.** Save file
+- [ ] **21.** Copy without a vault
+- [ ] **22.** Main button action setting
+- [ ] **23.** Keep the save page open
+
 ## Cases
 
 Each case starts from the setup state unless it says otherwise. "Note arrived" means a new file in `Tab Groups/` whose body lists the expected tabs as Markdown links.
