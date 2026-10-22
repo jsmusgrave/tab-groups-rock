@@ -34,7 +34,7 @@ Tick items as they're done. Order within a section is suggested, not required. S
 
 - [x] **Icon:** final design in `icons/` (concept 9b: stacked tabs with a dark rock, no purple). 16/32/48/128 PNGs in the manifest, 128 for the store, `icon.svg` as source.
 - [ ] **Screenshots:** 1280×800 PNG. At least: the popup with groups checked; the save page after sending; the resulting note in Obsidian; the bookmark folder in Chrome. Use the test vault, not a real one.
-- [ ] **Promo tile:** 440×280, optional but improves placement.
+- [x] **Promo tile:** 440×280 at `store/promo-tile-440x280.png`, regenerated from the icon by `store/promo_tile.py`.
 - [ ] **Privacy policy** page on GitHub Pages from the repo (`docs/privacy.md` or similar). Says: reads titles and URLs of tabs in the groups you choose; writes them to Obsidian and, if enabled, Chrome bookmarks on your device; nothing is transmitted anywhere; no analytics, no accounts; settings stored in Chrome sync storage.
 - [ ] **Short description** (≤132 chars): "Archive a Chrome tab group as a Markdown note in Obsidian, with a link to every tab." or similar.
 - [ ] **Detailed description:** what it does, how it works (Obsidian URI + clipboard), the bookmark folder, why the `tabs` permission shows a "read your browsing history" warning, the saved-group caveat, link to the repo, tip link.
