@@ -28,7 +28,7 @@ After the save-page auto-close change. Work top to bottom: case 11 needs a fresh
 - [x] **1.** Single group (retest: depends on the save tab closing on its own; now also returns to the tab you started from)
 - [x] **2.** Cancelled prompt (retest: depends on the save tab closing on its own)
 - [x] **6.** Context menu (retest: depends on the save tab closing on its own)
-- [ ] **12.** Status wording
+- [x] **12.** Status wording
 - [ ] **13.** Bookmark folder created
 - [ ] **14.** Two groups, one archive folder
 - [ ] **15.** Duplicate title does not merge
@@ -96,7 +96,7 @@ Each case starts from the setup state unless it says otherwise. "Note arrived" m
 | 9 | pass | Yes: after Close, the group is still listed under Chrome menu → Tab groups. The extension cannot remove it; the user must use Delete group there. |
 | 10 | pass |  |
 | 11 | pass | Validated on the build with the save-page auto-close setting. |
-| 12 | | |
+| 12 | pass |  |
 | 13 | | |
 | 14 | | |
 | 15 | | |
