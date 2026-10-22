@@ -30,7 +30,7 @@ After the save-page auto-close change. Work top to bottom: case 11 needs a fresh
 - [x] **6.** Context menu (retest: depends on the save tab closing on its own)
 - [x] **12.** Status wording
 - [x] **13.** Bookmark folder created
-- [ ] **14.** Two groups, one archive folder
+- [x] **14.** Two groups, one archive folder
 - [ ] **15.** Duplicate title does not merge
 - [ ] **16.** Reopen via Chrome
 - [ ] **17.** Bookmark folder off
@@ -98,7 +98,7 @@ Each case starts from the setup state unless it says otherwise. "Note arrived" m
 | 11 | pass | Validated on the build with the save-page auto-close setting. |
 | 12 | pass |  |
 | 13 | pass |  |
-| 14 | | |
+| 14 | pass |  |
 | 15 | | |
 | 16 | | |
 | 17 | | |
