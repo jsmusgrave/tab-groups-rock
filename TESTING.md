@@ -32,7 +32,7 @@ After the save-page auto-close change. Work top to bottom: case 11 needs a fresh
 - [x] **13.** Bookmark folder created
 - [x] **14.** Two groups, one archive folder
 - [x] **15.** Duplicate title does not merge
-- [ ] **16.** Reopen via Chrome
+- [x] **16.** Reopen via Chrome
 - [ ] **17.** Bookmark folder off
 - [ ] **18.** Close tabs, then Done
 - [ ] **19.** Select all
@@ -100,7 +100,7 @@ Each case starts from the setup state unless it says otherwise. "Note arrived" m
 | 13 | pass |  |
 | 14 | pass |  |
 | 15 | pass | Checked using the Alpha (2) folder created during case 14. |
-| 16 | | |
+| 16 | pass |  |
 | 17 | | |
 | 18 | | |
 | 19 | | |
