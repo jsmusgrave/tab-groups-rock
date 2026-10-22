@@ -83,7 +83,7 @@ Flow: the popup (or context menu) collects the groups, renders the notes, stores
 
 ### 4.2 One note or several
 
-- **Single note, no closing requested:** fire-and-forget. The page closes itself when Chrome loses focus (Obsidian took over). There is no timeout, since one could dismiss Chrome's prompt while the user is still reading it; a "Close now" button covers the cancelled-prompt case.
+- **Single note, no closing requested:** fire-and-forget. The page closes itself when Chrome loses focus (Obsidian took over). Only when the **Close the save page automatically** setting is on (the default) and the first-run hint isn't showing; otherwise the page stays with a Done button. There is no timeout, since one could dismiss Chrome's prompt while the user is still reading it; a "Close now" button covers the cancelled-prompt case.
 - **Otherwise:** the page stays open and lists every note with its status. Each note after the first is sent on a **Send next** click. This is deliberate even if Chrome would allow automatic launches: the clipboard must hold one note until Obsidian has read it, and a click is the only signal we have that the user saw it arrive.
 - **After the last note**, if closing was requested: **Close N tabs** / **Keep tabs**. Nothing closes on a cancelled prompt or a timeout. Groups sent through the `content=` fallback are never offered for closing, because the note may have been cut short.
 
