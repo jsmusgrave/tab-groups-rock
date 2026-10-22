@@ -36,7 +36,7 @@ After the save-page auto-close change. Work top to bottom: case 11 needs a fresh
 - [x] **17.** Bookmark folder off
 - [x] **18.** Close tabs, then Done
 - [x] **19.** Select all
-- [ ] **20.** Save file
+- [x] **20.** Save file
 - [ ] **21.** Copy without a vault
 - [ ] **22.** Main button action setting
 - [ ] **23.** Keep the save page open
@@ -104,7 +104,7 @@ Each case starts from the setup state unless it says otherwise. "Note arrived" m
 | 17 | pass |  |
 | 18 | pass |  |
 | 19 | pass |  |
-| 20 | | |
+| 20 | pass |  |
 | 21 | | |
 | 22 | | |
 | 23 | | |
