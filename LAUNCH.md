@@ -19,7 +19,8 @@ Tick items as they're done. Order within a section is suggested, not required. S
 - [x] **Saved-group note** after closing tabs (case 9 confirmed it): "Chrome still lists this group under Tab groups. Use Delete group there to remove it."
 - [x] **Wording:** save page status "Sent" → "Handed to Obsidian".
 - [x] **Close the save page automatically** setting (on by default), and the save page stays open while the first-run hint is showing. Added 2026-10-22 after case 11 showed the hint vanishing with the tab.
-- [ ] `TESTING.md` extended with cases 11–23 (done); full pass re-run.
+- [x] `TESTING.md` extended with cases 11–24; all run and passing on 2026-10-22 (cases 1, 2, 6 retested after the save-page changes).
+- [ ] Full pass of every case on the 1.0.0 build, right before upload.
 
 ## 3. Code hygiene
 

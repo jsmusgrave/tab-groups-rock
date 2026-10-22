@@ -20,7 +20,7 @@ Builds under test (commit IDs as of the 2026-10-22 history rewrite):
    - 1 pinned, ungrouped tab
 5. Clear `Tab Groups/` in the test vault so new notes are easy to spot, and delete `Other bookmarks → Archived groups` in `chrome://bookmarks` if it exists from an earlier run.
 
-## Current retest (2026-10-22)
+## Current retest (2026-10-22): complete, all pass
 
 After the save-page auto-close change. Work top to bottom: case 11 needs a fresh install, so it goes first. Tick each box as you go and record the result in the table at the bottom.
 
@@ -40,7 +40,7 @@ After the save-page auto-close change. Work top to bottom: case 11 needs a fresh
 - [x] **21.** Copy without a vault
 - [x] **22.** Main button action setting
 - [x] **23.** Keep the save page open
-- [ ] **24.** Save from the middle of a group
+- [x] **24.** Save from the middle of a group
 
 ## Cases
 
@@ -108,6 +108,6 @@ Each case starts from the setup state unless it says otherwise. "Note arrived" m
 | 21 | pass |  |
 | 22 | pass |  |
 | 23 | pass |  |
-| 24 | | |
+| 24 | pass |  |
 
 Result values: **pass**, **fail**, **skip**. Put what you actually saw in Notes for anything other than pass.
