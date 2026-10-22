@@ -1,10 +1,12 @@
 import esbuild from 'esbuild';
-import { cpSync, mkdirSync, copyFileSync, readFileSync, existsSync } from 'fs';
+import { cpSync, mkdirSync, copyFileSync, readFileSync, existsSync, rmSync } from 'fs';
 import { execSync } from 'child_process';
 
 const watch = process.argv.includes('--watch');
 const outdir = 'dist';
 
+// Production builds start from an empty dist/ so nothing stale reaches the store zip.
+if (!watch) rmSync(outdir, { recursive: true, force: true });
 mkdirSync(outdir, { recursive: true });
 
 const entryPoints = ['src/background.ts', 'src/popup.ts', 'src/options.ts', 'src/save.ts'];
@@ -26,7 +28,7 @@ function copyStaticFiles() {
 	copyFileSync('src/popup.css', `${outdir}/popup.css`);
 	copyFileSync('src/options.html', `${outdir}/options.html`);
 	copyFileSync('src/save.html', `${outdir}/save.html`);
-	if (existsSync('icons')) cpSync('icons', `${outdir}/icons`, { recursive: true });
+	if (existsSync('icons')) cpSync('icons', `${outdir}/icons`, { recursive: true, filter: (src) => !src.endsWith('.svg') });
 	cpSync('src/_locales', `${outdir}/_locales`, { recursive: true });
 }
 

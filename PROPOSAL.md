@@ -157,7 +157,7 @@ Planned, not built: template dropdown, editable note name and properties when ex
 ```
 build.mjs                       esbuild: bundles background/popup/options/save, copies html/css/icons to dist/
 manifest.chrome.json
-icons/                          placeholder icons from generate_icons.py
+icons/                          icon.svg source plus 16/32/48/128 PNGs
 src/
   background.ts                 context menu only: collect + render, then start a save job
   popup.html / popup.ts / popup.css   group picker; starts a save job, then closes
