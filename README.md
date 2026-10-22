@@ -31,6 +31,8 @@ User-facing strings live in `src/_locales/en/messages.json`. Translations are we
 
 Click the toolbar icon (or press `Cmd+Shift+G` / `Ctrl+Shift+G`). Check the groups you want to save, optionally tick **Close group after saving**, and click **Add to Obsidian**. Chrome will ask permission to open Obsidian the first time. When saving several groups, each note after the first is sent with a **Send next** click so you can confirm the previous one arrived. If you asked to close tabs, you are asked to confirm after the last note is sent.
 
+A single save with nothing to close hands the note to Obsidian and the save tab closes on its own. Turn off **Close the save page automatically** in settings to keep it open until you click Done.
+
 Right-clicking a page and choosing **Save this tab's group to Obsidian** saves that tab's group without opening the popup.
 
 The ▾ button next to the main button offers **Save file** (downloads one Markdown file per selected group) and **Copy to clipboard**. Neither needs Obsidian or a vault name. Settings lets you choose which of the three actions the main button performs.

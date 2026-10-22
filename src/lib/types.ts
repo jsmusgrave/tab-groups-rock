@@ -28,6 +28,9 @@ export interface Settings {
 	// Also write each archived group as a Chrome bookmark folder, which Chrome
 	// can reopen as a group via "Open all in new tab group".
 	writeBookmarks: boolean;
+	// Close the save page on its own once Obsidian takes focus, when a single
+	// note was sent and there are no tabs to close.
+	closeSavePage: boolean;
 	// Which main-button action the popup uses.
 	primaryAction: 'addToObsidian' | 'saveFile' | 'copyToClipboard';
 }
@@ -52,5 +55,6 @@ export interface JobNote {
 export interface SaveJob {
 	vaultName: string;
 	closeAfterSaving: boolean;
+	closeSavePage: boolean;
 	notes: JobNote[];
 }

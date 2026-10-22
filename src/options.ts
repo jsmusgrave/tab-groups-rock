@@ -7,6 +7,7 @@ const folderInput = document.getElementById('folder') as HTMLInputElement;
 const skipPinnedInput = document.getElementById('skip-pinned') as HTMLInputElement;
 const skipRestrictedInput = document.getElementById('skip-restricted') as HTMLInputElement;
 const writeBookmarksInput = document.getElementById('write-bookmarks') as HTMLInputElement;
+const closeSavePageInput = document.getElementById('close-save-page') as HTMLInputElement;
 const primaryActionSelect = document.getElementById('primary-action') as HTMLSelectElement;
 const savedIndicator = document.getElementById('saved-indicator') as HTMLDivElement;
 
@@ -28,6 +29,7 @@ async function init(): Promise<void> {
 	skipPinnedInput.checked = settings.skipPinnedTabs;
 	skipRestrictedInput.checked = settings.skipRestrictedUrls;
 	writeBookmarksInput.checked = settings.writeBookmarks;
+	closeSavePageInput.checked = settings.closeSavePage;
 	primaryActionSelect.value = settings.primaryAction;
 }
 
@@ -38,12 +40,13 @@ async function save(): Promise<void> {
 		skipPinnedTabs: skipPinnedInput.checked,
 		skipRestrictedUrls: skipRestrictedInput.checked,
 		writeBookmarks: writeBookmarksInput.checked,
+		closeSavePage: closeSavePageInput.checked,
 		primaryAction: primaryActionSelect.value as Settings['primaryAction']
 	});
 	showSaved();
 }
 
-for (const el of [vaultNameInput, folderInput, skipPinnedInput, skipRestrictedInput, writeBookmarksInput, primaryActionSelect]) {
+for (const el of [vaultNameInput, folderInput, skipPinnedInput, skipRestrictedInput, writeBookmarksInput, closeSavePageInput, primaryActionSelect]) {
 	el.addEventListener('change', save);
 }
 vaultNameInput.addEventListener('blur', save);

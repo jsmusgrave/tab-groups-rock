@@ -7,6 +7,7 @@ const DEFAULTS: Settings = {
 	skipRestrictedUrls: true,
 	closeGroupAfterSaving: false,
 	writeBookmarks: true,
+	closeSavePage: true,
 	primaryAction: 'addToObsidian'
 };
 

@@ -57,5 +57,6 @@
 	"skipPinned": { "message": "Skip pinned tabs" },
 	"skipRestricted": { "message": "List chrome:// and other restricted pages under \"Not archived\" instead of erroring" },
 	"writeBookmarks": { "message": "Also save each group as a bookmark folder under Archived groups (Chrome can reopen it as a group)" },
+	"closeSavePage": { "message": "Close the save page automatically after handing a single note to Obsidian" },
 	"saved": { "message": "Saved." }
 }

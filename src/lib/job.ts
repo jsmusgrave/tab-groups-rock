@@ -29,6 +29,7 @@ export async function startSaveJob(groups: GroupSnapshot[], settings: Settings, 
 	const job: SaveJob = {
 		vaultName: settings.vaultName,
 		closeAfterSaving: settings.closeGroupAfterSaving,
+		closeSavePage: settings.closeSavePage,
 		notes
 	};
 	const jobId = crypto.randomUUID();

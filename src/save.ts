@@ -6,8 +6,10 @@
 // and the clipboard must hold a note until Obsidian reads it, so the first
 // note goes automatically and each later one waits for a "Send next" click.
 //
-// A single note with nothing to close is fire-and-forget: the tab closes once
-// Chrome loses focus to Obsidian. Cancelling Chrome's "Open Obsidian?" prompt
+// A single note with nothing to close is fire-and-forget when the "close the
+// save page automatically" setting is on: the tab closes once Chrome loses
+// focus to Obsidian. It is never fire-and-forget while the first-run hint is
+// showing, or the hint would vanish before it could be read. Cancelling Chrome's "Open Obsidian?" prompt
 // fires no event, so a "Close now" button covers that case; there is no timer,
 // because one could dismiss the prompt while the user is still reading it.
 // Otherwise the page stays until the user is done, and closes tabs only if
@@ -134,14 +136,16 @@ function runInteractive(): void {
 	doneBtn.addEventListener('click', closeSelf);
 }
 
-async function maybeShowFirstRunHint(): Promise<void> {
+// Shows the hint unless it was dismissed before. Returns whether it is showing.
+async function maybeShowFirstRunHint(): Promise<boolean> {
 	const stored = await chrome.storage.local.get({ [FIRST_RUN_HINT_KEY]: false });
-	if (stored[FIRST_RUN_HINT_KEY]) return;
+	if (stored[FIRST_RUN_HINT_KEY]) return false;
 	hintEl.hidden = false;
 	hintDismissBtn.addEventListener('click', () => {
 		hintEl.hidden = true;
 		chrome.storage.local.set({ [FIRST_RUN_HINT_KEY]: true }).catch(() => undefined);
 	});
+	return true;
 }
 
 async function init(): Promise<void> {
@@ -158,10 +162,10 @@ async function init(): Promise<void> {
 	job = loaded;
 	statuses = job.notes.map(() => 'waiting');
 	headingEl.textContent = job.notes.length === 1 ? t('savingTitle') : t('savingGroupsTitle', String(job.notes.length));
-	maybeShowFirstRunHint().catch(() => undefined);
+	const hintShowing = await maybeShowFirstRunHint().catch(() => false);
 
 	await sendNext();
-	if (job.notes.length === 1 && !job.closeAfterSaving) {
+	if (job.notes.length === 1 && !job.closeAfterSaving && job.closeSavePage && !hintShowing) {
 		messageEl.textContent = t('closesOnItsOwn');
 		doneBtn.hidden = false;
 		doneBtn.textContent = t('closeNow');

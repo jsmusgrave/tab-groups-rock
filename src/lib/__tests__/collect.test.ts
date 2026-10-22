@@ -8,6 +8,7 @@ const settings: Settings = {
 	skipRestrictedUrls: true,
 	closeGroupAfterSaving: false,
 	writeBookmarks: false,
+	closeSavePage: true,
 	primaryAction: 'addToObsidian'
 };
 
