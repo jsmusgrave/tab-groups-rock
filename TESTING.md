@@ -2,7 +2,10 @@
 
 Run this against a fresh `npm run build` whenever the save flow, the popup, or `collect.ts` changes. Record results in the table at the bottom and commit it with the change, so the next person knows what was last verified.
 
-Build under test: `a898186` (source unchanged through `36474bc`) · Chrome: 155.0.8059.84 · Date: 2026-10-18
+Builds under test (commit IDs as of the 2026-10-22 history rewrite):
+
+- Cases 1–10: `c2ecee1` (source unchanged through `b522cf9`) · Chrome 155.0.8059.84 · 2026-10-18
+- Cases 11 onward: `ae7f7d8` (save-page auto-close setting) · 2026-10-22
 
 ## Setup
 
@@ -68,7 +71,7 @@ Each case starts from the setup state unless it says otherwise. "Note arrived" m
 | 8 | pass |  |
 | 9 | pass | Yes: after Close, the group is still listed under Chrome menu → Tab groups. The extension cannot remove it; the user must use Delete group there. |
 | 10 | pass |  |
-| 11 | | |
+| 11 | pass | Validated on the build with the save-page auto-close setting. |
 | 12 | | |
 | 13 | | |
 | 14 | | |
