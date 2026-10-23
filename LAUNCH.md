@@ -28,7 +28,7 @@ Tick items as they're done. Order within a section is suggested, not required. S
 - [x] `THIRD_PARTY_NOTICES.md` listing knap (MIT).
 - [x] Vitest with tests for `collect`, `render`, `frontmatter`, `filename` (`npm test`, 12 tests).
 - [x] `npm run build` also writes `builds/tab-groups-rock-<version>.zip` from `dist/` (source maps excluded).
-- [ ] Version bumped to `1.0.0` in `manifest.chrome.json` and `package.json`.
+- [x] Version bumped to `1.0.0` in `manifest.chrome.json` and `package.json`.
 - [x] `.github/workflows/ci.yml`: install, typecheck, test, build, upload the zip as an artifact.
 - [x] README updated for the bookmark destination, the tip link (hidden placeholder until the account exists), and the "Chrome still lists the group" caveat. Also a CI badge, privacy link, and Support section.
 

@@ -1,6 +1,6 @@
 {
 	"name": "tab-groups-rock",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"description": "Archive tab groups as Markdown notes in Obsidian, with a link to every tab, then close them and clear the clutter.",
 	"private": true,
 	"license": "MIT",
