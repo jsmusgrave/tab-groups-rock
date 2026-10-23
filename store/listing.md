@@ -29,7 +29,7 @@ HOW IT WORKS
 • Optionally tick "Close group after saving". You're always asked before any tab is closed.
 • Or right-click any page and choose "Save this tab's group to Obsidian".
 
-The note is handed to Obsidian the same way the official Obsidian Web Clipper does it: the note goes on your clipboard and Obsidian opens to create it. No Obsidian plugin, no server, no account. Obsidian must be installed on your computer.
+The note is handed to Obsidian the same way the official Obsidian Web Clipper does it: the note goes on your clipboard and Obsidian opens to create it. No Obsidian plugin, no server, no account. Requires the Obsidian desktop app, version 1.7.2 or later.
 
 BOOKMARK FOLDERS, TOO
 Each archived group is also saved as a Chrome bookmark folder under Other bookmarks › Archived groups, sorted by month. To bring a group back, right-click its folder and choose "Open all in new tab group". You can turn this off in settings.
