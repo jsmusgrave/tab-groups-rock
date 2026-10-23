@@ -43,7 +43,7 @@ GOOD TO KNOW
 
 PRIVACY
 Tab Groups Rock collects nothing and sends nothing anywhere. It reads only the titles and addresses of the tabs in the groups you choose, never page content. Chrome describes the tabs permission as "Read your browsing history" because it's the permission that lets an extension see tab addresses. That's the only reason it's requested.
-Privacy policy: https://jsmusgrave.github.io/tab-groups-rock/privacy
+Privacy policy: https://mugsy.io/tab-groups-rock/privacy
 
 Free and open source (MIT): https://github.com/jsmusgrave/tab-groups-rock
 
@@ -118,7 +118,7 @@ Writes each archived group as a bookmark folder under Other bookmarks / Archived
 - I do not use or transfer user data for purposes that are unrelated to my item's single purpose.
 - I do not use or transfer user data to determine creditworthiness or for lending purposes.
 
-**Privacy policy URL:** `https://jsmusgrave.github.io/tab-groups-rock/privacy`
+**Privacy policy URL:** `https://mugsy.io/tab-groups-rock/privacy`
 
 ## Distribution tab
 

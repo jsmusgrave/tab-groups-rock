@@ -39,7 +39,7 @@ All listing copy (descriptions, single purpose, permission justifications, priva
 - [x] **Icon:** final design in `icons/` (concept 9b: stacked tabs with a dark rock, no purple). 16/32/48/128 PNGs in the manifest, 128 for the store, `icon.svg` as source.
 - [ ] **Screenshots:** 1280×800 PNG. At least: the popup with groups checked; the save page after sending; the resulting note in Obsidian; the bookmark folder in Chrome. Use the test vault, not a real one.
 - [x] **Promo tile:** 440×280 at `store/promo-tile-440x280.png`, regenerated from the icon by `store/promo_tile.py`.
-- [x] **Privacy policy** at `docs/privacy.md`, served by GitHub Pages at `https://jsmusgrave.github.io/tab-groups-rock/privacy` once Pages is on (section 5). Covers: reads titles and URLs only of tabs in the groups you choose; writes them to Obsidian, a downloaded file, or Chrome bookmarks; nothing transmitted; no analytics, no accounts; what's kept in sync, local, and session storage.
+- [x] **Privacy policy** at `docs/privacy.md`, served by GitHub Pages at `https://mugsy.io/tab-groups-rock/privacy` (section 5). Covers: reads titles and URLs only of tabs in the groups you choose; writes them to Obsidian, a downloaded file, or Chrome bookmarks; nothing transmitted; no analytics, no accounts; what's kept in sync, local, and session storage.
 - [x] **Short description** (≤132 chars), 114 characters, also the manifest description: "Archive tab groups as Markdown notes in Obsidian, with a link to every tab, then close them and clear the clutter."
 - [x] **Detailed description:** what it does, how it works (Obsidian URI + clipboard), the bookmark folder, why the `tabs` permission shows a "read your browsing history" warning, the saved-group caveat, link to the repo, tip link.
 - [x] **Single-purpose statement:** "Archives Chrome tab groups as Markdown notes in Obsidian and as bookmark folders."
@@ -49,7 +49,7 @@ All listing copy (descriptions, single purpose, permission justifications, priva
 
 - [ ] Publish with your existing personal Google account (decided 2026-10-22). The extension stays tied to it; moving it later takes a transfer request to Chrome Web Store support.
 - [ ] Chrome Web Store developer registration, one-time $5 fee.
-- [ ] Contact email set and verified in the developer account. It must receive mail, so not the GitHub no-reply address. It may be shown to users, so consider an alias that forwards to you (for example iCloud Hide My Email) rather than your main Gmail address.
+- [ ] Contact email set to `tabgroups@mugsy.io` and verified in the developer account. It must receive mail, so not the GitHub no-reply address, and it may be shown to users, so not the Gmail address. The alias forwards to Gmail; replies from Gmail expose that address, so decide how to answer before replying to users.
 - [x] GitHub repo public, with LICENSE, README, PROPOSAL, TESTING, LAUNCH, and the privacy page.
 - [x] GitHub Pages on (2026-10-22; privacy URL verified): repo Settings → Pages → Deploy from a branch → `main`, folder `/docs`. Check the privacy URL loads before submitting.
 - [ ] Tip link account (Buy Me a Coffee or similar) in your own name, if wanted.

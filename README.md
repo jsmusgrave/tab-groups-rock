@@ -12,7 +12,7 @@ Chrome tab groups are great for organizing work, but there is no way to archive 
 
 The extension uses the same mechanism as the official Obsidian Web Clipper: the note is copied to the clipboard and Obsidian is opened with an `obsidian://new` link that tells it to read the note body from the clipboard. No plugins, no servers, no accounts. Obsidian must be installed; nothing else is required.
 
-Permissions: `tabs` and `tabGroups` to read the titles and URLs of the tabs you choose, `storage` for settings, `clipboardWrite` for the hand-off, `contextMenus` for the right-click item, and `bookmarks` to also save each group as a bookmark folder. There are no host permissions and no content scripts. The extension never reads page content and never sends anything anywhere except to Obsidian on your own machine. Full details are in the [privacy policy](https://jsmusgrave.github.io/tab-groups-rock/privacy).
+Permissions: `tabs` and `tabGroups` to read the titles and URLs of the tabs you choose, `storage` for settings, `clipboardWrite` for the hand-off, `contextMenus` for the right-click item, and `bookmarks` to also save each group as a bookmark folder. There are no host permissions and no content scripts. The extension never reads page content and never sends anything anywhere except to Obsidian on your own machine. Full details are in the [privacy policy](https://mugsy.io/tab-groups-rock/privacy).
 
 ## Install from source
 
