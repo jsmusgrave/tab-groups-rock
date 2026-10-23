@@ -56,6 +56,7 @@ If a tip link is added later, put it on its own line after the open-source line,
 
 - Store icon: `icons/icon128.png`
 - Small promo tile: `store/promo-tile-440x280.png`
+- Marquee promo tile (optional, used only if the store features the extension): `store/marquee-tile-1400x560.png`
 - Screenshots (1280×800, upload in this order): `store/screenshots/1-popup.png`, `2-save-page.png`, `3-obsidian-note.png`, `4-bookmarks.png`
 
 **Additional fields:**

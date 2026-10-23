@@ -1,6 +1,7 @@
-"""Render the Chrome Web Store small promo tile (440x280) from the icon geometry.
+"""Render a Chrome Web Store promo tile from the icon geometry.
 
 Usage: python3 store/promo_tile.py icons/icon.svg store/promo-tile-440x280.png
+       python3 store/promo_tile.py icons/icon.svg store/marquee-tile-1400x560.png marquee
 Needs Pillow and macOS's Avenir Next font.
 """
 import re
@@ -9,7 +10,13 @@ import sys
 from PIL import Image, ImageDraw, ImageFont
 
 svg_path, out_path = sys.argv[1], sys.argv[2]
-W, H, SS = 440, 280, 4
+marquee = sys.argv[3:] == ['marquee']
+# Each layout: canvas, icon size, text inset, title and tagline sizes, line offsets, gap to the icon.
+if marquee:
+    W, H, ICON, X, TITLE, TAG, DY, GAP = 1400, 560, 400, 96, 92, 38, (0, 108, 268, 320), 48
+else:
+    W, H, ICON, X, TITLE, TAG, DY, GAP = 440, 280, 196, 28, 34, 15, (0, 40, 104, 125), 18
+SS = 4
 BG = '#1b1a19'
 RED = '#ec3013'
 FONT = '/System/Library/Fonts/Avenir Next.ttc'
@@ -20,7 +27,6 @@ img = Image.new('RGB', (W * SS, H * SS), BG)
 d = ImageDraw.Draw(img)
 
 # Icon: 128-unit art scaled to ICON px, flush with the right edge so the tabs run off the tile.
-ICON = 196
 k = ICON / 128 * SS
 ox, oy = (W - ICON) * SS, (H - ICON) / 2 * SS
 for pts, fill in shapes:
@@ -30,14 +36,13 @@ for pts, fill in shapes:
 def font(index, size):
     return ImageFont.truetype(FONT, size * SS, index=index)
 
-X, GAP = 28, 18
-title, tag = font(HEAVY, 34), font(MEDIUM, 15)
-lines = [('Tab Groups', title, '#ffffff', 0), ('Rock', title, RED, 40),
-         ('Archive tab groups', tag, '#bab6b6', 104), ('as Obsidian notes.', tag, '#bab6b6', 125)]
+title, tag = font(HEAVY, TITLE), font(MEDIUM, TAG)
+lines = [('Tab Groups', title, '#ffffff', DY[0]), ('Rock', title, RED, DY[1]),
+         ('Archive tab groups', tag, '#bab6b6', DY[2]), ('as Obsidian notes.', tag, '#bab6b6', DY[3])]
 right = max(d.textbbox((0, 0), t, font=f)[2] for t, f, _, _ in lines) / SS
 assert X + right + GAP <= W - ICON, f'text ends at {X + right:.0f}, icon starts at {W - ICON}'
-block_h = 125 + 21
-top = (H - block_h) / 2 - 6
+block_h = DY[3] + TAG * 1.4
+top = (H - block_h) / 2 - TAG * 0.4
 for text, f, fill, dy in lines:
     d.text((X * SS, (top + dy) * SS), text, font=f, fill=fill)
 
