@@ -56,7 +56,7 @@ If a tip link is added later, put it on its own line after the open-source line,
 
 - Store icon: `icons/icon128.png`
 - Small promo tile: `store/promo-tile-440x280.png`
-- Screenshots: 1280×800, still to be taken (see `LAUNCH.md` section 4).
+- Screenshots (1280×800, upload in this order): `store/screenshots/1-popup.png`, `2-save-page.png`, `3-obsidian-note.png`, `4-bookmarks.png`
 
 **Additional fields:**
 

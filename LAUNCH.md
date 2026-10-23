@@ -37,7 +37,7 @@ Tick items as they're done. Order within a section is suggested, not required. S
 All listing copy (descriptions, single purpose, permission justifications, privacy-tab answers) is in `store/listing.md`, ready to paste.
 
 - [x] **Icon:** final design in `icons/` (concept 9b: stacked tabs with a dark rock, no purple). 16/32/48/128 PNGs in the manifest, 128 for the store, `icon.svg` as source.
-- [ ] **Screenshots:** 1280×800 PNG. At least: the popup with groups checked; the save page after sending; the resulting note in Obsidian; the bookmark folder in Chrome. Use the test vault, not a real one.
+- [x] **Screenshots:** 1280×800 PNG. At least: the popup with groups checked; the save page after sending; the resulting note in Obsidian; the bookmark folder in Chrome. Use the test vault, not a real one.
 - [x] **Promo tile:** 440×280 at `store/promo-tile-440x280.png`, regenerated from the icon by `store/promo_tile.py`.
 - [x] **Privacy policy** at `docs/privacy.md`, served by GitHub Pages at `https://mugsy.io/tab-groups-rock/privacy` (section 5). Covers: reads titles and URLs only of tabs in the groups you choose; writes them to Obsidian, a downloaded file, or Chrome bookmarks; nothing transmitted; no analytics, no accounts; what's kept in sync, local, and session storage.
 - [x] **Short description** (≤132 chars), 114 characters, also the manifest description: "Archive tab groups as Markdown notes in Obsidian, with a link to every tab, then close them and clear the clutter."
