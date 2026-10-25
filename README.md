@@ -6,7 +6,9 @@ Save a Chrome tab group as a Markdown note in [Obsidian](https://obsidian.md), w
 
 Chrome tab groups are great for organizing work, but there is no way to archive one. This extension turns a group (or a window's ungrouped tabs) into a note in your vault, then offers to close the tabs. Each note has typed frontmatter, one Markdown link per tab, and a collapsed JSON block so a future version can reopen the group.
 
-**Status:** preparing for the Chrome Web Store. See [PROPOSAL.md](PROPOSAL.md) for the design and decisions, [TESTING.md](TESTING.md) for the manual test plan, and [LAUNCH.md](LAUNCH.md) for what's left before release.
+**Install:** [Chrome Web Store](https://chromewebstore.google.com/detail/tab-groups-rock/geblmpmngeddhbpiicggajafocffkdch) (extension ID `geblmpmngeddhbpiicggajafocffkdch`). More at [mugsy.io/tab-groups-rock](https://mugsy.io/tab-groups-rock/).
+
+See [PROPOSAL.md](PROPOSAL.md) for the design and decisions, [TESTING.md](TESTING.md) for the manual test plan, and [LAUNCH.md](LAUNCH.md) for the launch checklist.
 
 ## How it works
 

@@ -57,12 +57,12 @@ All listing copy (descriptions, single purpose, permission justifications, priva
 
 ## 6. Submission
 
-- [ ] Upload the zip. Fill in the listing from section 4.
-- [ ] Privacy tab: data-use disclosures (none collected), certify compliance.
-- [ ] Trader declaration: **non-trader**.
-- [ ] Distribution: public, all regions.
-- [ ] Submit for review. First reviews commonly take a few days; up to a couple of weeks is not unusual.
-- [ ] Note the assigned extension ID in the README once published. The restore-link feature needs it.
+- [x] Upload the zip. Fill in the listing from section 4.
+- [x] Privacy tab: data-use disclosures (none collected), certify compliance.
+- [x] Trader declaration: **non-trader**.
+- [x] Distribution: public, all regions.
+- [x] Submit for review. First reviews commonly take a few days; up to a couple of weeks is not unusual.
+- [x] Note the assigned extension ID in the README once published. The restore-link feature needs it.
 
 ## 7. After approval
 
