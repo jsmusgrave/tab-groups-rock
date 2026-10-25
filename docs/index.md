@@ -46,5 +46,6 @@ Tab Groups Rock collects nothing and sends nothing anywhere. It reads only the t
 - [Chrome Web Store](https://chromewebstore.google.com/detail/tab-groups-rock/geblmpmngeddhbpiicggajafocffkdch)
 - [Source code and documentation](https://github.com/jsmusgrave/tab-groups-rock)
 - [Report a problem or suggest an idea](https://github.com/jsmusgrave/tab-groups-rock/issues)
+- [Buy me a coffee](https://buymeacoffee.com/jsmusgrave), if it saves you some clutter
 
 <small>Obsidian is a trademark of Dynalist Inc. Tab Groups Rock is not affiliated with or endorsed by Obsidian.</small>

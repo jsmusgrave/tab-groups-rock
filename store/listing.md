@@ -46,11 +46,10 @@ Tab Groups Rock collects nothing and sends nothing anywhere. It reads only the t
 Privacy policy: https://mugsy.io/tab-groups-rock/privacy
 
 Free and open source (MIT): https://github.com/jsmusgrave/tab-groups-rock
+Enjoying it? Buy me a coffee: https://buymeacoffee.com/jsmusgrave
 
 Obsidian is a trademark of Dynalist Inc. Tab Groups Rock is not affiliated with or endorsed by Obsidian.
 ```
-
-If a tip link is added later, put it on its own line after the open-source line, for example `Enjoying it? Buy me a coffee: <link>`.
 
 **Graphic assets:**
 

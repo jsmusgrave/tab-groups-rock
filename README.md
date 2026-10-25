@@ -47,7 +47,7 @@ Chrome keeps its own entry for every group under the Chrome menu's Tab groups, a
 
 Bug reports and ideas are welcome in [GitHub Issues](https://github.com/jsmusgrave/tab-groups-rock/issues).
 
-<!-- Tip link goes here once the account exists, e.g. "If it saves you some clutter, you can [buy me a coffee](<link>)." -->
+If it saves you some clutter, you can [buy me a coffee](https://buymeacoffee.com/jsmusgrave).
 
 ## Acknowledgements
 

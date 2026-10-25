@@ -52,7 +52,7 @@ All listing copy (descriptions, single purpose, permission justifications, priva
 - [ ] Contact email set to `tabgroups@mugsy.io` and verified in the developer account. It must receive mail, so not the GitHub no-reply address, and it may be shown to users, so not the Gmail address. The alias forwards to Gmail; replies from Gmail expose that address, so decide how to answer before replying to users.
 - [x] GitHub repo public, with LICENSE, README, PROPOSAL, TESTING, LAUNCH, and the privacy page.
 - [x] GitHub Pages on (2026-10-22; privacy URL verified): repo Settings → Pages → Deploy from a branch → `main`, folder `/docs`. Check the privacy URL loads before submitting.
-- [ ] Tip link account (Buy Me a Coffee or similar) in your own name, if wanted.
+- [x] Tip link account in your own name: https://buymeacoffee.com/jsmusgrave (in the README, landing page, and listing; paste the listing line into the store dashboard).
 - [ ] Optional: USPTO quick search for "Tab Groups Rock".
 
 ## 6. Submission
