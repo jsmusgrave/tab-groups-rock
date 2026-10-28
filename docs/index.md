@@ -6,7 +6,9 @@ title: Tab Groups Rock
 
 Archive Chrome tab groups as Markdown notes in Obsidian, with a link to every tab, then close them and clear the clutter.
 
-**[Add to Chrome from the Chrome Web Store](https://chromewebstore.google.com/detail/tab-groups-rock/geblmpmngeddhbpiicggajafocffkdch)** · Free and open source
+<a href="https://chromewebstore.google.com/detail/tab-groups-rock/geblmpmngeddhbpiicggajafocffkdch"><img src="images/chrome-web-store.png" alt="Available in the Chrome Web Store" width="206" height="58"></a>
+
+Free and open source.
 
 ## Overview
 
@@ -46,6 +48,9 @@ Tab Groups Rock collects nothing and sends nothing anywhere. It reads only the t
 - [Chrome Web Store](https://chromewebstore.google.com/detail/tab-groups-rock/geblmpmngeddhbpiicggajafocffkdch)
 - [Source code and documentation](https://github.com/jsmusgrave/tab-groups-rock)
 - [Report a problem or suggest an idea](https://github.com/jsmusgrave/tab-groups-rock/issues)
-- [Buy me a coffee](https://buymeacoffee.com/jsmusgrave), if it saves you some clutter
+
+If it saves you some clutter, you can buy me a coffee.
+
+<a href="https://buymeacoffee.com/jsmusgrave"><img src="images/buy-me-a-coffee.png" alt="Buy me a coffee" width="182" height="51"></a>
 
 <small>Obsidian is a trademark of Dynalist Inc. Tab Groups Rock is not affiliated with or endorsed by Obsidian.</small>
